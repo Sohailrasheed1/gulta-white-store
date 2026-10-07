@@ -1,19 +1,43 @@
 import React, { useState } from 'react';
-import { Sun, Moon, Crown, CheckCircle2 } from 'lucide-react';
+import { Sun, Moon, CheckCircle2 } from 'lucide-react';
 
 export default function SkinCareTips() {
   const [activeTab, setActiveTab] = useState('day');
 
   const dayRoutine = [
-    { step: 'Step 1', title: 'Deep Cleanse', desc: 'Use Gulta White Deep Glow Face Wash with lukewarm water to remove overnight sebum & impurities.' },
-    { step: 'Step 2', title: 'Hydrate & Protect', desc: 'Apply a pea-sized amount of Gulta White Day Cream across face and neck in gentle upward circular motion.' },
-    { step: 'Step 3', title: 'Solar Barrier', desc: 'Seal with Gulta White SPF 50+ Sunscreen for broad spectrum UVA/UVB protection.' }
+    {
+      step: 'Step 01',
+      title: 'Deep Cleanse',
+      desc: 'Use Gulta White Deep Glow Face Wash with lukewarm water to remove overnight sebum and environmental impurities without stripping moisture.'
+    },
+    {
+      step: 'Step 02',
+      title: 'Moisturize & Brighten',
+      desc: 'Apply a pea-sized amount of Gulta White Day Cream across face and neck in gentle upward circular motions to infuse Glutathione and Vitamin C.'
+    },
+    {
+      step: 'Step 03',
+      title: 'Broad-Spectrum Shield',
+      desc: 'Seal with Gulta White SPF 50+ Sunscreen. Non-greasy, zero white cast matte barrier against intense UVA/UVB rays.'
+    }
   ];
 
   const nightRoutine = [
-    { step: 'Step 1', title: 'Purify', desc: 'Wash away daily dust, pollutants, and environmental toxins with Face Wash.' },
-    { step: 'Step 2', title: 'Intensive Cellular Repair', desc: 'Apply Gulta White Night Cream generously before sleeping. Let Retinol & Glutathione renew cells overnight.' },
-    { step: 'Step 3', title: 'Overnight Regeneration', desc: 'Allow 7-8 hours rest for active dermatological cell turnover.' }
+    {
+      step: 'Step 01',
+      title: 'Purify & Clarify',
+      desc: 'Wash away daily dust, pollutants, and residue with the gentle Deep Glow Face Wash.'
+    },
+    {
+      step: 'Step 02',
+      title: 'Cellular Repair Complex',
+      desc: 'Apply Gulta White Intensive Overnight Cream generously before sleep. Niacinamide and Glutathione work with nocturnal cell renewal.'
+    },
+    {
+      step: 'Step 03',
+      title: 'Overnight Rejuvenation',
+      desc: 'Allow active peptides and vitamins 7 to 8 hours to restore elasticity, diminish dark spots, and hydrate deep skin layers.'
+    }
   ];
 
   const steps = activeTab === 'day' ? dayRoutine : nightRoutine;
@@ -22,62 +46,56 @@ export default function SkinCareTips() {
     <section
       id="routine"
       style={{
-        padding: 'clamp(2.5rem, 5vw, 5rem) 0',
-        backgroundColor: '#fdf2f5',
-        borderTop: '1px solid rgba(212, 175, 55, 0.25)',
-        borderBottom: '1px solid rgba(212, 175, 55, 0.25)',
-        overflow: 'hidden'
+        padding: 'clamp(2.5rem, 5vw, 4.5rem) 0',
+        backgroundColor: '#ffffff',
+        borderBottom: '1px solid var(--border-card)'
       }}
     >
       <div className="container">
-        
         {/* Section Header */}
         <div style={{ textAlign: 'center', maxWidth: '640px', margin: '0 auto 2rem auto', padding: '0 0.5rem' }}>
           <span
             style={{
               fontSize: '0.74rem',
               fontWeight: '800',
-              color: '#d4af37',
+              color: 'var(--gold-primary)',
               textTransform: 'uppercase',
-              letterSpacing: '1.8px',
-              display: 'inline-flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '6px',
+              letterSpacing: '1.5px',
+              display: 'inline-block',
               marginBottom: '6px'
             }}
           >
-            <Crown size={15} /> Daily Dermatological Protocol
+            Dermatological Protocol
           </span>
+
           <h2
             style={{
-              fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(1.4rem, 3.5vw, 2.4rem)',
-              fontWeight: '800',
-              color: '#1e050c',
+              fontSize: 'clamp(1.5rem, 3.5vw, 2.3rem)',
+              fontWeight: '900',
+              color: 'var(--text-main)',
               lineHeight: 1.25,
-              wordBreak: 'break-word'
+              marginBottom: '8px'
             }}
           >
-            Recommended <span className="gold-shimmer-text">Gulta White™</span> Routine
+            Recommended Skincare Regimen
           </h2>
-          <p style={{ fontSize: '0.86rem', color: '#7e5260', marginTop: '6px', lineHeight: 1.5 }}>
-            Simple 3-step protocols designed by skincare specialists for fast visible results.
+
+          <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: 1.55 }}>
+            Simple, high-efficacy 3-step protocols designed for visible results in Pakistani climate.
           </p>
         </div>
 
-        {/* Tab Switcher - Fully Responsive Segmented Pill */}
-        <div style={{ maxWidth: '380px', width: '100%', margin: '0 auto 2.2rem auto', padding: '0 0.5rem' }}>
+        {/* Tab Switcher */}
+        <div style={{ maxWidth: '360px', width: '100%', margin: '0 auto 2rem auto', padding: '0 0.5rem' }}>
           <div
             style={{
               display: 'grid',
               gridTemplateColumns: '1fr 1fr',
               gap: '6px',
-              backgroundColor: '#ffffff',
-              padding: '5px',
+              backgroundColor: 'var(--bg-page)',
+              padding: '4px',
               borderRadius: '9999px',
-              border: '1.5px solid rgba(212, 175, 55, 0.35)',
-              boxShadow: '0 4px 15px rgba(59, 0, 20, 0.05)'
+              border: '1px solid var(--border-card)'
             }}
           >
             <button
@@ -90,16 +108,16 @@ export default function SkinCareTips() {
                 padding: '10px 14px',
                 borderRadius: '9999px',
                 fontSize: '0.86rem',
-                fontWeight: '800',
-                background: activeTab === 'day' ? 'linear-gradient(135deg, #bf953f 0%, #d4af37 100%)' : 'transparent',
-                color: activeTab === 'day' ? '#140006' : '#4a1c29',
+                fontWeight: '700',
+                backgroundColor: activeTab === 'day' ? 'var(--brand-burgundy)' : 'transparent',
+                color: activeTab === 'day' ? '#fbeec8' : 'var(--text-main)',
                 border: 'none',
-                boxShadow: activeTab === 'day' ? '0 4px 14px rgba(212, 175, 55, 0.35)' : 'none',
-                transition: 'all 0.25s ease',
+                boxShadow: activeTab === 'day' ? 'var(--shadow-sm)' : 'none',
+                transition: 'all 0.2s ease',
                 cursor: 'pointer'
               }}
             >
-              <Sun size={17} /> Morning Protocol
+              <Sun size={16} /> Morning Protocol
             </button>
 
             <button
@@ -112,16 +130,16 @@ export default function SkinCareTips() {
                 padding: '10px 14px',
                 borderRadius: '9999px',
                 fontSize: '0.86rem',
-                fontWeight: '800',
-                background: activeTab === 'night' ? 'linear-gradient(135deg, #3b0014 0%, #140006 100%)' : 'transparent',
-                color: activeTab === 'night' ? '#fef08a' : '#4a1c29',
+                fontWeight: '700',
+                backgroundColor: activeTab === 'night' ? 'var(--brand-burgundy)' : 'transparent',
+                color: activeTab === 'night' ? '#fbeec8' : 'var(--text-main)',
                 border: 'none',
-                boxShadow: activeTab === 'night' ? '0 4px 14px rgba(59, 0, 20, 0.35)' : 'none',
-                transition: 'all 0.25s ease',
+                boxShadow: activeTab === 'night' ? 'var(--shadow-sm)' : 'none',
+                transition: 'all 0.2s ease',
                 cursor: 'pointer'
               }}
             >
-              <Moon size={17} /> Evening Repair
+              <Moon size={16} /> Evening Protocol
             </button>
           </div>
         </div>
@@ -130,7 +148,7 @@ export default function SkinCareTips() {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
             gap: '1.25rem'
           }}
         >
@@ -138,55 +156,51 @@ export default function SkinCareTips() {
             <div
               key={idx}
               style={{
-                backgroundColor: '#ffffff',
-                borderRadius: '20px',
-                padding: '1.4rem 1.25rem',
-                border: '1px solid rgba(212, 175, 55, 0.3)',
-                boxShadow: '0 8px 24px rgba(59, 0, 20, 0.05)',
-                transition: 'transform 0.3s ease',
+                backgroundColor: 'var(--bg-page)',
+                borderRadius: 'var(--radius-lg)',
+                padding: '1.5rem',
+                border: '1px solid var(--border-card)',
+                transition: 'transform 0.2s ease, border-color 0.2s ease',
                 display: 'flex',
                 flexDirection: 'column'
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.transform = 'translateY(-4px)')}
-              onMouseLeave={(e) => (e.currentTarget.style.transform = 'translateY(0)')}
             >
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
                 <span
                   style={{
                     fontSize: '0.74rem',
-                    fontWeight: '900',
-                    color: '#d4af37',
+                    fontWeight: '800',
+                    color: 'var(--gold-primary)',
                     textTransform: 'uppercase',
-                    letterSpacing: '1.5px',
-                    background: 'rgba(212, 175, 55, 0.12)',
+                    letterSpacing: '1px',
+                    backgroundColor: '#ffffff',
+                    border: '1px solid var(--border-card)',
                     padding: '3px 10px',
                     borderRadius: '9999px'
                   }}
                 >
                   {item.step}
                 </span>
-                <CheckCircle2 size={16} color="#d4af37" />
+                <CheckCircle2 size={16} color="var(--gold-primary)" />
               </div>
 
               <h4
                 style={{
-                  fontFamily: 'var(--font-serif)',
-                  fontSize: '1.18rem',
+                  fontSize: '1.15rem',
                   fontWeight: '800',
-                  color: '#1e050c',
+                  color: 'var(--text-main)',
                   marginBottom: '8px'
                 }}
               >
                 {item.title}
               </h4>
 
-              <p style={{ fontSize: '0.88rem', color: '#7e5260', lineHeight: 1.6 }}>
+              <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
                 {item.desc}
               </p>
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Star, ShoppingBag, Eye, Zap, Check, Sparkles } from 'lucide-react';
+import { Star, ShoppingBag, Check, Zap } from 'lucide-react';
 
 export default function ProductCard({ product, onAddToCart, onQuickView, onBuyNow }) {
   const [added, setAdded] = useState(false);
@@ -11,41 +11,36 @@ export default function ProductCard({ product, onAddToCart, onQuickView, onBuyNo
     setTimeout(() => setAdded(false), 1500);
   };
 
-  const discountPercent = Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100);
+  const handleDirectBuy = (e) => {
+    e.stopPropagation();
+    onBuyNow(product);
+  };
+
+  const discountPercent = product.oldPrice 
+    ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100) 
+    : 0;
 
   return (
-    <div
+    <article
+      className="product-card-surface"
+      onClick={() => onQuickView(product)}
       style={{
-        backgroundColor: '#ffffff',
-        borderRadius: '24px',
-        border: '1px solid rgba(212, 175, 55, 0.25)',
-        overflow: 'hidden',
-        boxShadow: '0 10px 30px rgba(59, 0, 20, 0.06)',
-        transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+        cursor: 'pointer',
         display: 'flex',
         flexDirection: 'column',
-        position: 'relative'
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.transform = 'translateY(-8px)';
-        e.currentTarget.style.borderColor = '#d4af37';
-        e.currentTarget.style.boxShadow = '0 20px 45px rgba(59, 0, 20, 0.16)';
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.transform = 'translateY(0)';
-        e.currentTarget.style.borderColor = 'rgba(212, 175, 55, 0.25)';
-        e.currentTarget.style.boxShadow = '0 10px 30px rgba(59, 0, 20, 0.06)';
+        height: '100%'
       }}
     >
       {/* Product Image Frame */}
-      <div style={{
-        position: 'relative',
-        width: '100%',
-        height: '280px',
-        backgroundColor: '#fdf2f5',
-        overflow: 'hidden',
-        cursor: 'pointer'
-      }} onClick={() => onQuickView(product)}>
+      <div
+        style={{
+          position: 'relative',
+          width: '100%',
+          paddingTop: '92%',
+          backgroundColor: '#fbf4f6',
+          overflow: 'hidden'
+        }}
+      >
         <img
           src={product.image}
           alt={product.title}
@@ -53,167 +48,212 @@ export default function ProductCard({ product, onAddToCart, onQuickView, onBuyNo
             e.target.onerror = null;
             e.target.src = 'assets/images/day-cream.jpg';
           }}
+          loading="lazy"
           style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
             width: '100%',
             height: '100%',
             objectFit: 'cover',
-            transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)'
+            transition: 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)'
           }}
+          onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.04)')}
+          onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
         />
 
         {/* Top Badges */}
-        <div style={{
-          position: 'absolute',
-          top: '14px',
-          left: '14px',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '6px'
-        }}>
+        <div
+          style={{
+            position: 'absolute',
+            top: '12px',
+            left: '12px',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '6px',
+            zIndex: 2
+          }}
+        >
           {product.badge && (
-            <span style={{
-              background: 'linear-gradient(135deg, #3b0014 0%, #140006 100%)',
-              border: '1px solid rgba(212, 175, 55, 0.4)',
-              color: '#fef08a',
-              fontSize: '0.72rem',
-              fontWeight: '800',
-              padding: '5px 14px',
-              borderRadius: '9999px',
-              boxShadow: '0 4px 14px rgba(0, 0, 0, 0.25)'
-            }}>
-              ✨ {product.badge}
+            <span
+              style={{
+                backgroundColor: 'var(--brand-burgundy)',
+                color: '#fbeec8',
+                fontSize: '0.7rem',
+                fontWeight: '800',
+                padding: '4px 10px',
+                borderRadius: 'var(--radius-xs)',
+                letterSpacing: '0.3px',
+                boxShadow: '0 2px 6px rgba(0, 0, 0, 0.2)'
+              }}
+            >
+              {product.badge}
             </span>
           )}
         </div>
 
         {/* Discount Pill */}
-        <div style={{
-          position: 'absolute',
-          top: '14px',
-          right: '14px'
-        }}>
-          <span style={{
-            background: 'linear-gradient(135deg, #bf953f 0%, #d4af37 100%)',
-            color: '#140006',
-            fontSize: '0.75rem',
-            fontWeight: '900',
-            padding: '5px 12px',
-            borderRadius: '9999px',
-            boxShadow: '0 4px 12px rgba(212, 175, 55, 0.3)'
-          }}>
-            SAVE {discountPercent}%
-          </span>
-        </div>
-
-        {/* Quick View Floating Action */}
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            onQuickView(product);
-          }}
-          style={{
-            position: 'absolute',
-            bottom: '14px',
-            right: '14px',
-            width: '40px',
-            height: '40px',
-            borderRadius: '50%',
-            background: 'rgba(255, 255, 255, 0.95)',
-            border: '1px solid rgba(212, 175, 55, 0.4)',
-            color: '#3b0014',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            boxShadow: '0 4px 14px rgba(0,0,0,0.15)',
-            transition: 'transform 0.2s ease'
-          }}
-          title="Quick View Details"
-        >
-          <Eye size={18} />
-        </button>
+        {discountPercent > 0 && (
+          <div
+            style={{
+              position: 'absolute',
+              top: '12px',
+              right: '12px',
+              zIndex: 2
+            }}
+          >
+            <span
+              style={{
+                backgroundColor: '#ffffff',
+                color: 'var(--brand-burgundy)',
+                border: '1px solid var(--border-card)',
+                fontSize: '0.72rem',
+                fontWeight: '800',
+                padding: '4px 9px',
+                borderRadius: 'var(--radius-xs)',
+                boxShadow: '0 2px 6px rgba(0, 0, 0, 0.08)'
+              }}
+            >
+              {discountPercent}% OFF
+            </span>
+          </div>
+        )}
       </div>
 
-      {/* Card Content Body */}
-      <div style={{
-        padding: '1.4rem',
-        display: 'flex',
-        flexDirection: 'column',
-        flexGrow: 1,
-        justifyContent: 'space-between'
-      }}>
+      {/* Card Body */}
+      <div
+        style={{
+          padding: '1.25rem',
+          display: 'flex',
+          flexDirection: 'column',
+          flexGrow: 1,
+          justifyContent: 'space-between'
+        }}
+      >
         <div>
-          {/* Header Row: Volume & Rating */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-            <span style={{ fontSize: '0.75rem', fontWeight: '800', color: '#d4af37', textTransform: 'uppercase', letterSpacing: '1px' }}>
+          {/* Metadata Row: Volume & Rating */}
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              marginBottom: '6px'
+            }}
+          >
+            <span
+              style={{
+                fontSize: '0.72rem',
+                fontWeight: '800',
+                color: 'var(--gold-primary)',
+                textTransform: 'uppercase',
+                letterSpacing: '0.8px'
+              }}
+            >
               {product.volume}
             </span>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '0.82rem', fontWeight: '800', color: '#3b0014' }}>
-              <Star size={14} fill="#d4af37" color="#d4af37" />
+
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '3px',
+                fontSize: '0.8rem',
+                fontWeight: '700',
+                color: 'var(--text-main)'
+              }}
+            >
+              <Star size={13} fill="#c5a059" color="#c5a059" />
               <span>{product.rating}</span>
-              <span style={{ color: '#7e5260', fontWeight: '500' }}>({product.reviewsCount})</span>
+              <span style={{ color: 'var(--text-muted)', fontWeight: '500' }}>
+                ({product.reviewsCount})
+              </span>
             </div>
           </div>
 
-          {/* Title */}
-          <h3 style={{
-            fontFamily: 'var(--font-serif)',
-            fontSize: '1.2rem',
-            fontWeight: '800',
-            color: '#1e050c',
-            marginBottom: '6px',
-            lineHeight: 1.3,
-            cursor: 'pointer'
-          }} onClick={() => onQuickView(product)}>
+          {/* Product Title */}
+          <h3
+            style={{
+              fontSize: '1.05rem',
+              fontWeight: '800',
+              color: 'var(--text-main)',
+              marginBottom: '6px',
+              lineHeight: 1.35
+            }}
+          >
             {product.title}
           </h3>
 
-          {/* Tagline */}
-          <p style={{
-            fontSize: '0.85rem',
-            color: '#7e5260',
-            lineHeight: 1.5,
-            marginBottom: '1.2rem',
-            display: '-webkit-box',
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: 'vertical',
-            overflow: 'hidden'
-          }}>
+          {/* Concise Benefit Tagline */}
+          <p
+            style={{
+              fontSize: '0.82rem',
+              color: 'var(--text-secondary)',
+              lineHeight: 1.45,
+              marginBottom: '1rem',
+              display: '-webkit-box',
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: 'vertical',
+              overflow: 'hidden'
+            }}
+          >
             {product.tagline}
           </p>
         </div>
 
         <div>
-          {/* Price Tag */}
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: '10px', marginBottom: '1.2rem' }}>
-            <span style={{ fontSize: '1.4rem', fontWeight: '900', color: '#3b0014' }}>
+          {/* Pricing Row */}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'baseline',
+              gap: '8px',
+              marginBottom: '1rem'
+            }}
+          >
+            <span
+              style={{
+                fontSize: '1.28rem',
+                fontWeight: '900',
+                color: 'var(--brand-burgundy)',
+                letterSpacing: '-0.02em'
+              }}
+            >
               Rs. {product.price.toLocaleString()}
             </span>
             {product.oldPrice && (
-              <span style={{ fontSize: '0.92rem', color: '#7e5260', textDecoration: 'line-through' }}>
+              <span
+                style={{
+                  fontSize: '0.88rem',
+                  color: 'var(--text-muted)',
+                  textDecoration: 'line-through'
+                }}
+              >
                 Rs. {product.oldPrice.toLocaleString()}
               </span>
             )}
           </div>
 
-          {/* Buttons */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '10px' }}>
+          {/* Action Buttons: Clean 2-action or primary Add to Bag */}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '8px' }}>
             <button
               onClick={handleAdd}
               style={{
-                background: added ? '#25d366' : 'linear-gradient(135deg, #3b0014 0%, #140006 100%)',
-                border: '1px solid rgba(212, 175, 55, 0.3)',
+                backgroundColor: added ? 'var(--color-success)' : 'var(--brand-burgundy)',
                 color: '#ffffff',
-                padding: '12px 18px',
-                borderRadius: '14px',
+                border: 'none',
+                padding: '11px 16px',
+                borderRadius: 'var(--radius-sm)',
                 fontWeight: '700',
                 fontSize: '0.88rem',
-                display: 'flex',
+                display: 'inline-flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                gap: '8px',
-                transition: 'all 0.3s ease',
-                boxShadow: added ? '0 4px 14px rgba(37, 211, 102, 0.3)' : '0 6px 18px rgba(59, 0, 20, 0.25)'
+                gap: '6px',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+                boxShadow: added ? '0 2px 8px rgba(21, 128, 61, 0.3)' : 'var(--shadow-xs)'
               }}
+              aria-label={`Add ${product.title} to bag`}
             >
               {added ? (
                 <>
@@ -221,31 +261,27 @@ export default function ProductCard({ product, onAddToCart, onQuickView, onBuyNo
                 </>
               ) : (
                 <>
-                  <ShoppingBag size={16} color="#d4af37" /> Add to Cart
+                  <ShoppingBag size={15} color="#c5a059" /> Add to Bag
                 </>
               )}
             </button>
 
             <button
-              onClick={() => onBuyNow(product)}
-              className="btn-gold-foil"
+              onClick={handleDirectBuy}
+              className="btn-gold-action"
               style={{
-                padding: '12px 16px',
-                borderRadius: '14px',
-                fontSize: '0.85rem',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '4px'
+                padding: '11px 14px',
+                borderRadius: 'var(--radius-sm)',
+                fontSize: '0.84rem'
               }}
               title="Instant Checkout"
+              aria-label={`Instant buy ${product.title}`}
             >
-              <Zap size={16} /> Buy
+              <Zap size={14} /> Buy
             </button>
           </div>
         </div>
-
       </div>
-    </div>
+    </article>
   );
 }

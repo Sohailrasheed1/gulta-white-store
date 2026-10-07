@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Star, ShoppingBag, ShieldCheck, Check, Zap, Sparkles, Crown } from 'lucide-react';
+import { X, Star, ShoppingBag, Check, Zap } from 'lucide-react';
 
 export default function ProductModal({ product, onClose, onAddToCart, onBuyNow }) {
   const [qty, setQty] = useState(1);
@@ -13,61 +13,74 @@ export default function ProductModal({ product, onClose, onAddToCart, onBuyNow }
     setTimeout(() => setAdded(false), 1500);
   };
 
+  const discountPercent = product.oldPrice 
+    ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100) 
+    : 0;
+
   return (
-    <div className="modal-overlay" onClick={onClose}>
+    <div className="modal-overlay" onClick={onClose} role="dialog" aria-modal="true">
       <div
-        className="luxury-glass-light animate-fade-in"
+        className="animate-slide-bottom"
         style={{
           width: '100%',
-          maxWidth: '880px',
-          maxHeight: '92vh',
+          maxWidth: '860px',
+          maxHeight: '90vh',
           overflowY: 'auto',
           backgroundColor: '#ffffff',
-          borderRadius: '28px',
-          padding: '0',
+          borderRadius: 'var(--radius-xl)',
+          padding: 0,
           position: 'relative',
-          boxShadow: '0 25px 70px rgba(20, 0, 6, 0.4)'
+          boxShadow: 'var(--shadow-xl)',
+          border: '1px solid var(--border-card)'
         }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Mobile Drag Sheet Handle */}
         <div className="mobile-sheet-drag-handle" />
 
+        {/* Close Button */}
         <button
           onClick={onClose}
           style={{
             position: 'absolute',
-            top: '18px',
-            right: '18px',
+            top: '16px',
+            right: '16px',
             width: '38px',
             height: '38px',
             borderRadius: '50%',
-            backgroundColor: '#fdf2f5',
-            border: '1px solid rgba(212, 175, 55, 0.4)',
-            color: '#3b0014',
+            backgroundColor: 'var(--bg-page)',
+            border: '1px solid var(--border-card)',
+            color: 'var(--brand-burgundy)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            zIndex: 10
+            cursor: 'pointer',
+            zIndex: 10,
+            transition: 'background-color 0.2s ease'
           }}
+          aria-label="Close product details"
         >
-          <X size={20} />
+          <X size={18} />
         </button>
 
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))'
-        }}>
-          {/* Image */}
-          <div style={{
-            backgroundColor: '#fdf2f5',
-            padding: '2rem',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            position: 'relative',
-            borderRight: '1px solid rgba(212, 175, 55, 0.2)'
-          }}>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))'
+          }}
+        >
+          {/* Left: Product Image */}
+          <div
+            style={{
+              backgroundColor: '#fbf4f6',
+              padding: '2rem',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              position: 'relative',
+              borderRight: '1px solid var(--border-card)'
+            }}
+          >
             <img
               src={product.image}
               alt={product.title}
@@ -77,173 +90,301 @@ export default function ProductModal({ product, onClose, onAddToCart, onBuyNow }
               }}
               style={{
                 maxWidth: '100%',
-                maxHeight: '380px',
+                maxHeight: '360px',
                 objectFit: 'contain',
-                borderRadius: '20px',
-                boxShadow: '0 15px 35px rgba(59, 0, 20, 0.15)'
+                borderRadius: 'var(--radius-md)'
               }}
             />
 
             {product.badge && (
-              <span style={{
-                position: 'absolute',
-                top: '20px',
-                left: '20px',
-                background: 'linear-gradient(135deg, #3b0014 0%, #140006 100%)',
-                border: '1px solid rgba(212, 175, 55, 0.4)',
-                color: '#fef08a',
-                fontSize: '0.8rem',
-                fontWeight: '800',
-                padding: '6px 16px',
-                borderRadius: '9999px'
-              }}>
-                ✨ {product.badge}
+              <span
+                style={{
+                  position: 'absolute',
+                  top: '18px',
+                  left: '18px',
+                  backgroundColor: 'var(--brand-burgundy)',
+                  color: '#fbeec8',
+                  fontSize: '0.74rem',
+                  fontWeight: '800',
+                  padding: '4px 12px',
+                  borderRadius: 'var(--radius-xs)'
+                }}
+              >
+                {product.badge}
               </span>
             )}
           </div>
 
-          {/* Details */}
-          <div style={{ padding: '2rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+          {/* Right: Product Details */}
+          <div
+            style={{
+              padding: '2rem',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between'
+            }}
+          >
             <div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-                <span style={{ fontSize: '0.8rem', fontWeight: '900', color: '#d4af37', textTransform: 'uppercase', letterSpacing: '1.2px' }}>
+              {/* Overline & Rating */}
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  marginBottom: '8px'
+                }}
+              >
+                <span
+                  style={{
+                    fontSize: '0.74rem',
+                    fontWeight: '800',
+                    color: 'var(--gold-primary)',
+                    textTransform: 'uppercase',
+                    letterSpacing: '1px'
+                  }}
+                >
                   {product.volume} • Original Formula
                 </span>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '4px', color: '#3b0014', fontWeight: '800', fontSize: '0.9rem' }}>
-                  <Star size={16} fill="#d4af37" color="#d4af37" />
+
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '4px',
+                    color: 'var(--text-main)',
+                    fontWeight: '700',
+                    fontSize: '0.84rem'
+                  }}
+                >
+                  <Star size={14} fill="#c5a059" color="#c5a059" />
                   <span>{product.rating}</span>
-                  <span style={{ color: '#7e5260', fontWeight: '500' }}>({product.reviewsCount} reviews)</span>
+                  <span style={{ color: 'var(--text-muted)', fontWeight: '500' }}>
+                    ({product.reviewsCount} reviews)
+                  </span>
                 </div>
               </div>
 
-              <h2 style={{
-                fontFamily: 'var(--font-serif)',
-                fontSize: '1.65rem',
-                fontWeight: '800',
-                color: '#1e050c',
-                marginBottom: '10px',
-                lineHeight: 1.25
-              }}>
+              {/* Title */}
+              <h2
+                style={{
+                  fontSize: '1.45rem',
+                  fontWeight: '900',
+                  color: 'var(--text-main)',
+                  marginBottom: '10px',
+                  lineHeight: 1.25
+                }}
+              >
                 {product.title}
               </h2>
 
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: '14px', marginBottom: '1.2rem' }}>
-                <span style={{ fontSize: '1.65rem', fontWeight: '900', color: '#3b0014' }}>
+              {/* Pricing */}
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'baseline',
+                  gap: '12px',
+                  marginBottom: '1.2rem'
+                }}
+              >
+                <span
+                  style={{
+                    fontSize: '1.55rem',
+                    fontWeight: '900',
+                    color: 'var(--brand-burgundy)'
+                  }}
+                >
                   Rs. {product.price.toLocaleString()}
                 </span>
                 {product.oldPrice && (
-                  <span style={{ fontSize: '1.05rem', color: '#7e5260', textDecoration: 'line-through' }}>
+                  <span
+                    style={{
+                      fontSize: '0.95rem',
+                      color: 'var(--text-muted)',
+                      textDecoration: 'line-through'
+                    }}
+                  >
                     Rs. {product.oldPrice.toLocaleString()}
+                  </span>
+                )}
+                {discountPercent > 0 && (
+                  <span
+                    style={{
+                      fontSize: '0.76rem',
+                      fontWeight: '800',
+                      color: 'var(--brand-burgundy)',
+                      backgroundColor: 'var(--bg-subtle)',
+                      padding: '2px 8px',
+                      borderRadius: 'var(--radius-xs)'
+                    }}
+                  >
+                    Save {discountPercent}%
                   </span>
                 )}
               </div>
 
-              <p style={{ fontSize: '0.92rem', color: '#4a1c29', lineHeight: 1.6, marginBottom: '1.2rem' }}>
+              {/* Description */}
+              <p
+                style={{
+                  fontSize: '0.9rem',
+                  color: 'var(--text-secondary)',
+                  lineHeight: 1.6,
+                  marginBottom: '1.2rem'
+                }}
+              >
                 {product.details}
               </p>
 
+              {/* Active Ingredients */}
               {product.ingredients && (
-                <div style={{
-                  backgroundColor: '#fdf2f5',
-                  borderRadius: '16px',
-                  padding: '14px',
-                  marginBottom: '1.2rem',
-                  border: '1px solid rgba(212, 175, 55, 0.3)'
-                }}>
-                  <h4 style={{ fontSize: '0.8rem', fontWeight: '900', color: '#3b0014', textTransform: 'uppercase', marginBottom: '6px', display: 'flex', alignItems: 'center', gap: '6px', letterSpacing: '0.5px' }}>
-                    <Sparkles size={14} color="#d4af37" /> Key Active Ingredients
+                <div
+                  style={{
+                    backgroundColor: 'var(--bg-page)',
+                    borderRadius: 'var(--radius-md)',
+                    padding: '12px 14px',
+                    marginBottom: '1.4rem',
+                    border: '1px solid var(--border-card)'
+                  }}
+                >
+                  <h4
+                    style={{
+                      fontSize: '0.74rem',
+                      fontWeight: '800',
+                      color: 'var(--text-main)',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.5px',
+                      marginBottom: '6px'
+                    }}
+                  >
+                    Key Active Ingredients
                   </h4>
-                  <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-                    {Array.isArray(product.ingredients) ? product.ingredients.map((ing, idx) => (
-                      <li key={idx} style={{
-                        background: '#ffffff',
-                        border: '1px solid rgba(212, 175, 55, 0.3)',
-                        borderRadius: '9999px',
-                        padding: '3px 10px',
-                        fontSize: '0.78rem',
-                        color: '#3b0014',
-                        fontWeight: '700'
-                      }}>
-                        {ing}
-                      </li>
-                    )) : (
-                      <li style={{ fontSize: '0.82rem', color: '#4a1c29' }}>{product.ingredients}</li>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                    {Array.isArray(product.ingredients) ? (
+                      product.ingredients.map((ing, idx) => (
+                        <span
+                          key={idx}
+                          style={{
+                            backgroundColor: '#ffffff',
+                            border: '1px solid var(--border-card)',
+                            borderRadius: '9999px',
+                            padding: '3px 10px',
+                            fontSize: '0.75rem',
+                            color: 'var(--text-main)',
+                            fontWeight: '600'
+                          }}
+                        >
+                          {ing}
+                        </span>
+                      ))
+                    ) : (
+                      <span style={{ fontSize: '0.82rem', color: 'var(--text-secondary)' }}>
+                        {product.ingredients}
+                      </span>
                     )}
-                  </ul>
+                  </div>
                 </div>
               )}
             </div>
 
-            {/* Actions */}
+            {/* Actions & Quantity */}
             <div>
-              <div style={{ display: 'flex', gap: '12px', alignItems: 'center', marginBottom: '1rem' }}>
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  border: '1px solid rgba(212, 175, 55, 0.4)',
-                  borderRadius: '12px',
-                  overflow: 'hidden',
-                  background: '#ffffff'
-                }}>
+              <div style={{ display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '0.8rem' }}>
+                {/* Quantity Controls */}
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    border: '1.5px solid var(--border-card)',
+                    borderRadius: 'var(--radius-sm)',
+                    overflow: 'hidden',
+                    backgroundColor: '#ffffff',
+                    height: '46px'
+                  }}
+                >
                   <button
                     onClick={() => setQty(Math.max(1, qty - 1))}
-                    style={{ padding: '10px 14px', fontWeight: '900', color: '#3b0014', background: '#fdf2f5' }}
+                    style={{
+                      width: '40px',
+                      height: '100%',
+                      fontWeight: '800',
+                      color: 'var(--text-main)',
+                      backgroundColor: 'var(--bg-page)',
+                      border: 'none',
+                      cursor: 'pointer'
+                    }}
+                    aria-label="Decrease quantity"
                   >
                     -
                   </button>
-                  <span style={{ padding: '0 14px', fontWeight: '800', fontSize: '0.95rem' }}>{qty}</span>
+                  <span
+                    style={{
+                      padding: '0 14px',
+                      fontWeight: '800',
+                      fontSize: '0.92rem',
+                      color: 'var(--text-main)'
+                    }}
+                  >
+                    {qty}
+                  </span>
                   <button
                     onClick={() => setQty(qty + 1)}
-                    style={{ padding: '10px 14px', fontWeight: '900', color: '#3b0014', background: '#fdf2f5' }}
+                    style={{
+                      width: '40px',
+                      height: '100%',
+                      fontWeight: '800',
+                      color: 'var(--text-main)',
+                      backgroundColor: 'var(--bg-page)',
+                      border: 'none',
+                      cursor: 'pointer'
+                    }}
+                    aria-label="Increase quantity"
                   >
                     +
                   </button>
                 </div>
 
+                {/* Add to Bag Button */}
                 <button
                   onClick={handleAdd}
                   style={{
                     flexGrow: 1,
-                    background: added ? '#25d366' : 'linear-gradient(135deg, #3b0014 0%, #140006 100%)',
+                    height: '46px',
+                    backgroundColor: added ? 'var(--color-success)' : 'var(--brand-burgundy)',
                     color: '#ffffff',
-                    border: '1px solid rgba(212, 175, 55, 0.3)',
-                    padding: '14px',
-                    borderRadius: '12px',
+                    border: 'none',
+                    borderRadius: 'var(--radius-sm)',
                     fontWeight: '800',
-                    fontSize: '0.95rem',
+                    fontSize: '0.92rem',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     gap: '8px',
-                    boxShadow: '0 6px 18px rgba(59, 0, 20, 0.25)'
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease',
+                    boxShadow: added ? '0 2px 8px rgba(21, 128, 61, 0.3)' : 'var(--shadow-sm)'
                   }}
                 >
-                  {added ? <Check size={18} /> : <ShoppingBag size={18} color="#d4af37" />}
-                  {added ? 'Added to Cart!' : `Add to Cart • Rs. ${(product.price * qty).toLocaleString()}`}
+                  {added ? <Check size={18} /> : <ShoppingBag size={18} color="#c5a059" />}
+                  {added ? 'Added to Bag!' : `Add to Bag • Rs. ${(product.price * qty).toLocaleString()}`}
                 </button>
               </div>
 
+              {/* Instant Buy Now Button */}
               <button
                 onClick={() => {
                   onClose();
                   onBuyNow(product, qty);
                 }}
-                className="btn-gold-foil"
+                className="btn-gold-action"
                 style={{
                   width: '100%',
-                  padding: '12px',
-                  borderRadius: '12px',
-                  fontSize: '0.95rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '8px'
+                  height: '46px',
+                  borderRadius: 'var(--radius-sm)',
+                  fontSize: '0.92rem'
                 }}
               >
-                <Zap size={16} /> Instant Checkout Now
+                <Zap size={16} /> Instant Checkout
               </button>
             </div>
-
           </div>
         </div>
       </div>

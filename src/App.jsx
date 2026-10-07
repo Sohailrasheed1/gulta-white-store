@@ -92,7 +92,7 @@ export default function App() {
 
   const handleDirectWhatsAppOrder = ({ cart: orderCart, finalTotal }) => {
     const itemsText = orderCart.map(i => `• ${i.title} (x${i.quantity}) - Rs. ${(i.price * i.quantity).toLocaleString()}`).join('%0A');
-    const message = `👋 *Hi Gulta White™! I want to order the following items:*%0A%0A${itemsText}%0A%0A💰 *Total Amount*: Rs. ${finalTotal.toLocaleString()}%0A🚚 *Shipping*: Free Express Delivery%0A%0APlease confirm my order!`;
+    const message = `*NEW ORDER - GULTA WHITE™ LUXURY STORE*%0A--------------------------------%0A${itemsText}%0A--------------------------------%0A*Total Amount*: Rs. ${finalTotal.toLocaleString()}%0A*Delivery*: Free Express Shipping Across Pakistan%0A%0APlease confirm my order details!`;
     const cleanNum = whatsappNumber.replace(/[^0-9]/g, '');
     window.open(`https://wa.me/${cleanNum}?text=${message}`, '_blank');
   };

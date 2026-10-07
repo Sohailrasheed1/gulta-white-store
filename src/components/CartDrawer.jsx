@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
-import { X, Trash2, ShoppingBag, ArrowRight, ShieldCheck, Tag, Sparkles, Truck, Check, Crown } from 'lucide-react';
+import { X, Trash2, ShoppingBag, ArrowRight, Truck, Check, Tag } from 'lucide-react';
 
-export default function CartDrawer({ isOpen, onClose, cart, updateQuantity, removeFromCart, onProceedToCheckout, onDirectWhatsAppOrder }) {
+export default function CartDrawer({
+  isOpen,
+  onClose,
+  cart,
+  updateQuantity,
+  removeFromCart,
+  onProceedToCheckout,
+  onDirectWhatsAppOrder
+}) {
   const [couponCode, setCouponCode] = useState('');
   const [discountPercent, setDiscountPercent] = useState(0);
   const [couponApplied, setCouponApplied] = useState(false);
@@ -9,7 +17,7 @@ export default function CartDrawer({ isOpen, onClose, cart, updateQuantity, remo
 
   if (!isOpen) return null;
 
-  const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const discountAmount = Math.round((subtotal * discountPercent) / 100);
   const freeShippingThreshold = 3000;
   const amountForFreeShipping = Math.max(0, freeShippingThreshold - subtotal);
@@ -23,20 +31,20 @@ export default function CartDrawer({ isOpen, onClose, cart, updateQuantity, remo
       setCouponApplied(true);
       setCouponError('');
     } else {
-      setCouponError('Invalid promo code. Use GLOW10 for 10% off!');
+      setCouponError('Invalid code. Use GLOW10 for 10% off');
     }
   };
 
   return (
-    <div className="drawer-overlay" onClick={onClose}>
+    <div className="drawer-overlay" onClick={onClose} role="dialog" aria-modal="true">
       <div
-        className="animate-slide-left"
+        className="animate-slide-right"
         style={{
           width: '100%',
           maxWidth: '460px',
           height: '100%',
           backgroundColor: '#ffffff',
-          boxShadow: '-15px 0 40px rgba(20, 0, 6, 0.4)',
+          boxShadow: 'var(--shadow-xl)',
           display: 'flex',
           flexDirection: 'column',
           zIndex: 2100
@@ -44,33 +52,36 @@ export default function CartDrawer({ isOpen, onClose, cart, updateQuantity, remo
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div style={{
-          padding: '1.4rem 1.6rem',
-          background: 'linear-gradient(135deg, #3b0014 0%, #140006 100%)',
-          color: '#ffffff',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          borderBottom: '1px solid rgba(212, 175, 55, 0.3)'
-        }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <div style={{
-              width: '38px',
-              height: '38px',
-              borderRadius: '12px',
-              background: 'rgba(212, 175, 55, 0.15)',
-              border: '1px solid rgba(212, 175, 55, 0.4)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}>
-              <ShoppingBag size={20} color="#d4af37" />
+        <div
+          style={{
+            padding: '1.25rem 1.5rem',
+            backgroundColor: 'var(--brand-burgundy)',
+            color: '#ffffff',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            borderBottom: '1px solid rgba(197, 160, 89, 0.25)'
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <div
+              style={{
+                width: '36px',
+                height: '36px',
+                borderRadius: '8px',
+                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+            >
+              <ShoppingBag size={18} color="#c5a059" />
             </div>
             <div>
-              <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', fontWeight: '800', color: '#ffffff' }}>
-                Your Luxury Cart
+              <h3 style={{ fontSize: '1.15rem', fontWeight: '800', color: '#ffffff' }}>
+                Your Shopping Bag
               </h3>
-              <span style={{ fontSize: '0.75rem', color: '#ebd390' }}>
+              <span style={{ fontSize: '0.74rem', color: '#d8c2cb' }}>
                 {cart.reduce((a, b) => a + b.quantity, 0)} Items Selected
               </span>
             </div>
@@ -79,99 +90,122 @@ export default function CartDrawer({ isOpen, onClose, cart, updateQuantity, remo
           <button
             onClick={onClose}
             style={{
-              color: '#d4af37',
-              background: 'rgba(255,255,255,0.1)',
-              width: '34px',
-              height: '34px',
+              color: '#c5a059',
+              backgroundColor: 'rgba(255, 255, 255, 0.08)',
+              width: '32px',
+              height: '32px',
               borderRadius: '50%',
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center'
+              justifyContent: 'center',
+              border: 'none',
+              cursor: 'pointer'
             }}
+            aria-label="Close cart"
           >
-            <X size={20} />
+            <X size={18} />
           </button>
         </div>
 
         {/* Free Shipping Progress Meter */}
-        <div style={{
-          backgroundColor: '#fdf2f5',
-          padding: '14px 1.6rem',
-          borderBottom: '1px solid rgba(212, 175, 55, 0.25)'
-        }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px', fontSize: '0.82rem', fontWeight: '800', color: '#3b0014' }}>
+        <div
+          style={{
+            backgroundColor: 'var(--bg-page)',
+            padding: '12px 1.5rem',
+            borderBottom: '1px solid var(--border-card)'
+          }}
+        >
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              marginBottom: '6px',
+              fontSize: '0.8rem',
+              fontWeight: '700',
+              color: 'var(--text-main)'
+            }}
+          >
             <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <Truck size={16} color="#d4af37" />
-              {amountForFreeShipping > 0 ? `Add Rs. ${amountForFreeShipping.toLocaleString()} more for FREE Express Delivery` : '🎉 FREE Express Shipping Unlocked!'}
+              <Truck size={15} color="var(--gold-primary)" />
+              {amountForFreeShipping > 0
+                ? `Add Rs. ${amountForFreeShipping.toLocaleString()} more for FREE Express Delivery`
+                : 'FREE Express Delivery Unlocked!'}
             </span>
-            <span style={{ color: '#d4af37' }}>{Math.round(freeShippingPercentage)}%</span>
+            <span style={{ color: 'var(--gold-primary)', fontWeight: '800' }}>
+              {Math.round(freeShippingPercentage)}%
+            </span>
           </div>
-          <div style={{
-            width: '100%',
-            height: '8px',
-            backgroundColor: '#fae6ec',
-            borderRadius: '9999px',
-            overflow: 'hidden'
-          }}>
-            <div style={{
-              width: `${freeShippingPercentage}%`,
-              height: '100%',
-              background: 'linear-gradient(90deg, #bf953f 0%, #d4af37 50%, #25d366 100%)',
-              transition: 'width 0.5s cubic-bezier(0.16, 1, 0.3, 1)'
-            }} />
+
+          <div
+            style={{
+              width: '100%',
+              height: '6px',
+              backgroundColor: 'var(--border-subtle)',
+              borderRadius: '9999px',
+              overflow: 'hidden'
+            }}
+          >
+            <div
+              style={{
+                width: `${freeShippingPercentage}%`,
+                height: '100%',
+                backgroundColor: 'var(--gold-primary)',
+                transition: 'width 0.4s ease'
+              }}
+            />
           </div>
         </div>
 
         {/* Cart Item List */}
-        <div style={{ flexGrow: 1, overflowY: 'auto', padding: '1.4rem' }}>
+        <div style={{ flexGrow: 1, overflowY: 'auto', padding: '1.25rem' }}>
           {cart.length === 0 ? (
             <div style={{ textAlign: 'center', padding: '4rem 1rem' }}>
-              <div style={{
-                width: '80px',
-                height: '80px',
-                borderRadius: '50%',
-                backgroundColor: '#fdf2f5',
-                border: '1px solid rgba(212, 175, 55, 0.4)',
-                color: '#3b0014',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                margin: '0 auto 1.5rem auto',
-                boxShadow: '0 8px 25px rgba(59, 0, 20, 0.1)'
-              }}>
-                <ShoppingBag size={36} color="#d4af37" />
+              <div
+                style={{
+                  width: '72px',
+                  height: '72px',
+                  borderRadius: '50%',
+                  backgroundColor: 'var(--bg-page)',
+                  color: 'var(--text-muted)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  margin: '0 auto 1.25rem auto'
+                }}
+              >
+                <ShoppingBag size={32} color="var(--gold-primary)" />
               </div>
-              <h4 style={{ fontSize: '1.2rem', fontWeight: '800', color: '#1e050c', marginBottom: '8px' }}>
-                Your cart is currently empty
+              <h4 style={{ fontSize: '1.15rem', fontWeight: '800', color: 'var(--text-main)', marginBottom: '6px' }}>
+                Your bag is empty
               </h4>
-              <p style={{ fontSize: '0.9rem', color: '#7e5260', marginBottom: '1.8rem', lineHeight: 1.5 }}>
-                Explore our signature Glutathione skincare collection and treat your skin today.
+              <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', marginBottom: '1.5rem' }}>
+                Discover our signature dermatological formulas for glowing skin.
               </p>
               <button
                 onClick={onClose}
-                className="btn-gold-foil"
+                className="btn-gold-action"
                 style={{
-                  padding: '12px 28px',
+                  padding: '11px 24px',
                   borderRadius: '9999px',
-                  fontSize: '0.92rem'
+                  fontSize: '0.88rem'
                 }}
               >
                 Explore Products
               </button>
             </div>
           ) : (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               {cart.map((item) => (
                 <div
                   key={item.id}
                   style={{
                     display: 'flex',
-                    gap: '14px',
-                    padding: '14px',
-                    borderRadius: '18px',
+                    gap: '12px',
+                    padding: '12px',
+                    borderRadius: 'var(--radius-md)',
                     backgroundColor: '#ffffff',
-                    border: '1px solid rgba(212, 175, 55, 0.25)',
-                    boxShadow: '0 6px 16px rgba(59, 0, 20, 0.04)',
+                    border: '1px solid var(--border-card)',
                     alignItems: 'center'
                   }}
                 >
@@ -183,40 +217,83 @@ export default function CartDrawer({ isOpen, onClose, cart, updateQuantity, remo
                       e.target.src = 'assets/images/day-cream.jpg';
                     }}
                     style={{
-                      width: '70px',
-                      height: '70px',
+                      width: '68px',
+                      height: '68px',
                       objectFit: 'cover',
-                      borderRadius: '12px',
-                      backgroundColor: '#fdf2f5'
+                      borderRadius: 'var(--radius-sm)',
+                      backgroundColor: 'var(--bg-page)',
+                      flexShrink: 0
                     }}
                   />
 
-                  <div style={{ flexGrow: 1 }}>
-                    <h5 style={{ fontSize: '0.92rem', fontWeight: '800', color: '#1e050c', marginBottom: '4px', lineHeight: 1.3 }}>
+                  <div style={{ flexGrow: 1, minWidth: 0 }}>
+                    <h5
+                      style={{
+                        fontSize: '0.9rem',
+                        fontWeight: '800',
+                        color: 'var(--text-main)',
+                        marginBottom: '3px',
+                        lineHeight: 1.3,
+                        whiteSpace: 'nowrap',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis'
+                      }}
+                    >
                       {item.title}
                     </h5>
-                    <span style={{ fontSize: '0.8rem', color: '#d4af37', fontWeight: '800' }}>
+
+                    <span style={{ fontSize: '0.82rem', color: 'var(--gold-primary)', fontWeight: '800' }}>
                       Rs. {item.price.toLocaleString()}
                     </span>
 
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '8px' }}>
-                      <div style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        border: '1px solid rgba(212, 175, 55, 0.3)',
-                        borderRadius: '8px',
-                        overflow: 'hidden'
-                      }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '6px' }}>
+                      <div
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          border: '1px solid var(--border-card)',
+                          borderRadius: 'var(--radius-xs)',
+                          overflow: 'hidden',
+                          height: '28px'
+                        }}
+                      >
                         <button
                           onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                          style={{ padding: '3px 10px', fontWeight: '800', background: '#fdf2f5', color: '#3b0014' }}
+                          style={{
+                            width: '26px',
+                            height: '100%',
+                            fontWeight: '800',
+                            backgroundColor: 'var(--bg-page)',
+                            border: 'none',
+                            color: 'var(--text-main)',
+                            cursor: 'pointer'
+                          }}
+                          aria-label="Decrease quantity"
                         >
                           -
                         </button>
-                        <span style={{ padding: '0 10px', fontSize: '0.85rem', fontWeight: '800' }}>{item.quantity}</span>
+                        <span
+                          style={{
+                            padding: '0 8px',
+                            fontSize: '0.82rem',
+                            fontWeight: '800',
+                            color: 'var(--text-main)'
+                          }}
+                        >
+                          {item.quantity}
+                        </span>
                         <button
                           onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                          style={{ padding: '3px 10px', fontWeight: '800', background: '#fdf2f5', color: '#3b0014' }}
+                          style={{
+                            width: '26px',
+                            height: '100%',
+                            fontWeight: '800',
+                            backgroundColor: 'var(--bg-page)',
+                            border: 'none',
+                            color: 'var(--text-main)',
+                            cursor: 'pointer'
+                          }}
+                          aria-label="Increase quantity"
                         >
                           +
                         </button>
@@ -224,16 +301,31 @@ export default function CartDrawer({ isOpen, onClose, cart, updateQuantity, remo
                     </div>
                   </div>
 
-                  <div style={{ textAlign: 'right' }}>
-                    <span style={{ fontSize: '0.98rem', fontWeight: '900', color: '#3b0014', display: 'block', marginBottom: '10px' }}>
+                  <div style={{ textAlign: 'right', flexShrink: 0 }}>
+                    <span
+                      style={{
+                        fontSize: '0.94rem',
+                        fontWeight: '900',
+                        color: 'var(--brand-burgundy)',
+                        display: 'block',
+                        marginBottom: '8px'
+                      }}
+                    >
                       Rs. {(item.price * item.quantity).toLocaleString()}
                     </span>
                     <button
                       onClick={() => removeFromCart(item.id)}
-                      style={{ color: '#7e5260', transition: 'color 0.2s ease' }}
+                      style={{
+                        color: 'var(--text-muted)',
+                        background: 'none',
+                        border: 'none',
+                        cursor: 'pointer',
+                        padding: '4px'
+                      }}
                       title="Remove item"
+                      aria-label="Remove item from bag"
                     >
-                      <Trash2 size={18} />
+                      <Trash2 size={16} />
                     </button>
                   </div>
                 </div>
@@ -242,27 +334,31 @@ export default function CartDrawer({ isOpen, onClose, cart, updateQuantity, remo
           )}
         </div>
 
-        {/* Footer Summary & Checkout */}
+        {/* Footer Summary & Checkout Actions */}
         {cart.length > 0 && (
-          <div style={{
-            padding: '1.4rem 1.6rem',
-            backgroundColor: '#ffffff',
-            borderTop: '1px solid rgba(212, 175, 55, 0.25)',
-            boxShadow: '0 -8px 25px rgba(0,0,0,0.04)'
-          }}>
-            {/* Promo Form */}
+          <div
+            style={{
+              padding: '1.25rem 1.5rem',
+              backgroundColor: '#ffffff',
+              borderTop: '1px solid var(--border-card)',
+              boxShadow: '0 -4px 16px rgba(0, 0, 0, 0.04)'
+            }}
+          >
+            {/* Promo Code Form */}
             <form onSubmit={handleApplyCoupon} style={{ display: 'flex', gap: '8px', marginBottom: '1rem' }}>
-              <div style={{
-                position: 'relative',
-                flexGrow: 1,
-                display: 'flex',
-                alignItems: 'center',
-                background: '#fdf2f5',
-                border: '1px solid rgba(212, 175, 55, 0.3)',
-                borderRadius: '12px',
-                padding: '0 12px'
-              }}>
-                <Tag size={15} color="#7e5260" style={{ marginRight: '6px' }} />
+              <div
+                style={{
+                  position: 'relative',
+                  flexGrow: 1,
+                  display: 'flex',
+                  alignItems: 'center',
+                  backgroundColor: 'var(--bg-page)',
+                  border: '1px solid var(--border-card)',
+                  borderRadius: 'var(--radius-sm)',
+                  padding: '0 10px'
+                }}
+              >
+                <Tag size={14} color="var(--text-muted)" style={{ marginRight: '6px' }} />
                 <input
                   type="text"
                   placeholder="Promo Code (e.g. GLOW10)"
@@ -273,7 +369,7 @@ export default function CartDrawer({ isOpen, onClose, cart, updateQuantity, remo
                     border: 'none',
                     outline: 'none',
                     background: 'transparent',
-                    fontSize: '0.85rem',
+                    fontSize: '0.84rem',
                     width: '100%',
                     textTransform: 'uppercase',
                     fontWeight: '600'
@@ -284,13 +380,14 @@ export default function CartDrawer({ isOpen, onClose, cart, updateQuantity, remo
                 type="submit"
                 disabled={couponApplied}
                 style={{
-                  background: couponApplied ? '#25d366' : 'linear-gradient(135deg, #3b0014 0%, #140006 100%)',
-                  color: couponApplied ? '#ffffff' : '#fef08a',
-                  padding: '10px 18px',
-                  borderRadius: '12px',
-                  fontWeight: '800',
+                  backgroundColor: couponApplied ? 'var(--color-success)' : 'var(--brand-burgundy)',
+                  color: '#ffffff',
+                  padding: '8px 16px',
+                  borderRadius: 'var(--radius-sm)',
+                  fontWeight: '700',
                   fontSize: '0.82rem',
-                  border: 'none'
+                  border: 'none',
+                  cursor: 'pointer'
                 }}
               >
                 {couponApplied ? 'Applied' : 'Apply'}
@@ -298,98 +395,99 @@ export default function CartDrawer({ isOpen, onClose, cart, updateQuantity, remo
             </form>
 
             {couponError && (
-              <p style={{ color: '#e53e3e', fontSize: '0.78rem', marginBottom: '8px', fontWeight: '600' }}>{couponError}</p>
+              <p style={{ color: 'var(--color-error)', fontSize: '0.76rem', marginBottom: '8px', fontWeight: '600' }}>
+                {couponError}
+              </p>
             )}
             {couponApplied && (
-              <p style={{ color: '#25d366', fontSize: '0.8rem', fontWeight: '800', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                <Check size={15} /> 10% Promo Discount Applied!
+              <p
+                style={{
+                  color: 'var(--color-success)',
+                  fontSize: '0.78rem',
+                  fontWeight: '700',
+                  marginBottom: '8px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '4px'
+                }}
+              >
+                <Check size={14} /> 10% Discount Applied!
               </p>
             )}
 
-            {/* Price Calculations */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.9rem', marginBottom: '1.2rem' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', color: '#7e5260' }}>
+            {/* Calculations */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '0.88rem', marginBottom: '1rem' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--text-secondary)' }}>
                 <span>Subtotal</span>
                 <span style={{ fontWeight: '700' }}>Rs. {subtotal.toLocaleString()}</span>
               </div>
 
               {discountAmount > 0 && (
-                <div style={{ display: 'flex', justifyContent: 'space-between', color: '#25d366', fontWeight: '800' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--color-success)', fontWeight: '700' }}>
                   <span>Discount (10%)</span>
                   <span>- Rs. {discountAmount.toLocaleString()}</span>
                 </div>
               )}
 
-              <div style={{ display: 'flex', justifyContent: 'space-between', color: '#7e5260' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--text-secondary)' }}>
                 <span>Express Delivery</span>
-                <span style={{ color: '#25d366', fontWeight: '800' }}>
+                <span style={{ color: 'var(--color-success)', fontWeight: '700' }}>
                   {amountForFreeShipping === 0 ? 'FREE' : 'Rs. 150'}
                 </span>
               </div>
 
-              <div style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                fontSize: '1.3rem',
-                fontWeight: '900',
-                color: '#1e050c',
-                borderTop: '1px solid rgba(212, 175, 55, 0.2)',
-                paddingTop: '10px',
-                marginTop: '4px'
-              }}>
-                <span>Total Amount</span>
-                <span style={{ color: '#3b0014' }}>
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  fontSize: '1.25rem',
+                  fontWeight: '900',
+                  color: 'var(--text-main)',
+                  borderTop: '1px solid var(--border-card)',
+                  paddingTop: '8px',
+                  marginTop: '4px'
+                }}
+              >
+                <span>Total</span>
+                <span style={{ color: 'var(--brand-burgundy)' }}>
                   Rs. {(finalTotal + (amountForFreeShipping === 0 ? 0 : 150)).toLocaleString()}
                 </span>
               </div>
             </div>
 
-            {/* Buttons */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            {/* Primary & Secondary Action CTAs */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               <button
                 onClick={() => {
                   onClose();
                   onProceedToCheckout({ cart, subtotal, discountAmount, finalTotal });
                 }}
-                className="btn-royal-maroon"
+                className="btn-primary-action"
                 style={{
                   width: '100%',
-                  padding: '15px',
-                  borderRadius: '14px',
-                  fontSize: '1rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '8px'
+                  padding: '14px',
+                  borderRadius: 'var(--radius-md)',
+                  fontSize: '0.98rem'
                 }}
               >
-                Proceed to Checkout <ArrowRight size={18} color="#d4af37" />
+                Proceed to Checkout <ArrowRight size={17} color="#c5a059" />
               </button>
 
               <button
                 onClick={() => onDirectWhatsAppOrder({ cart, finalTotal })}
+                className="btn-whatsapp-action"
                 style={{
                   width: '100%',
-                  background: '#25d366',
-                  color: '#ffffff',
-                  padding: '12px',
-                  borderRadius: '14px',
-                  fontWeight: '800',
-                  fontSize: '0.9rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '8px',
-                  boxShadow: '0 6px 18px rgba(37, 211, 102, 0.3)'
+                  padding: '11px',
+                  borderRadius: 'var(--radius-md)',
+                  fontSize: '0.88rem'
                 }}
               >
-                <Sparkles size={16} /> Quick Order via WhatsApp
+                Direct Order via WhatsApp
               </button>
             </div>
-
           </div>
         )}
-
       </div>
     </div>
   );

@@ -18,54 +18,74 @@ export default function WhatsAppAdminModal({ isOpen, onClose, currentNumber, onS
   };
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
+    <div className="modal-overlay" onClick={onClose} role="dialog" aria-modal="true">
       <div
-        className="glass-card animate-fade-in"
+        className="animate-slide-bottom"
         style={{
           width: '100%',
-          maxWidth: '450px',
+          maxWidth: '440px',
           backgroundColor: '#ffffff',
-          borderRadius: '20px',
+          borderRadius: 'var(--radius-lg)',
           padding: '1.75rem',
-          boxShadow: '0 20px 50px rgba(86, 0, 29, 0.3)',
-          position: 'relative'
+          boxShadow: 'var(--shadow-xl)',
+          position: 'relative',
+          border: '1px solid var(--border-card)'
         }}
         onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={onClose}
-          style={{ position: 'absolute', top: '16px', right: '16px', color: '#7d6068' }}
+          style={{
+            position: 'absolute',
+            top: '16px',
+            right: '16px',
+            color: 'var(--text-muted)',
+            background: 'none',
+            border: 'none',
+            cursor: 'pointer'
+          }}
+          aria-label="Close admin modal"
         >
-          <X size={20} />
+          <X size={18} />
         </button>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '1rem' }}>
-          <div style={{
-            width: '40px',
-            height: '40px',
-            borderRadius: '12px',
-            background: '#25d366',
-            color: '#ffffff',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '1.25rem' }}>
+          <div
+            style={{
+              width: '40px',
+              height: '40px',
+              borderRadius: 'var(--radius-sm)',
+              backgroundColor: 'var(--color-whatsapp)',
+              color: '#ffffff',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+          >
             <PhoneCall size={20} />
           </div>
           <div>
-            <h3 style={{ fontSize: '1.15rem', fontWeight: '800', color: '#1a0108' }}>
-              Store WhatsApp Config
+            <h3 style={{ fontSize: '1.15rem', fontWeight: '800', color: 'var(--text-main)' }}>
+              Store WhatsApp Settings
             </h3>
-            <span style={{ fontSize: '0.78rem', color: '#7d6068' }}>
-              Configure target number for WhatsApp order dispatches.
+            <span style={{ fontSize: '0.78rem', color: 'var(--text-secondary)' }}>
+              Target number for customer orders & dispatch.
             </span>
           </div>
         </div>
 
         <form onSubmit={handleSave}>
           <div style={{ marginBottom: '1.25rem' }}>
-            <label style={{ fontSize: '0.82rem', fontWeight: '700', color: '#56001d', display: 'block', marginBottom: '6px' }}>
-              WhatsApp Phone Number (with country code):
+            <label
+              style={{
+                fontSize: '0.8rem',
+                fontWeight: '700',
+                color: 'var(--text-main)',
+                display: 'block',
+                marginBottom: '6px'
+              }}
+            >
+              WhatsApp Phone Number (with Country Code):
             </label>
             <input
               type="text"
@@ -75,13 +95,14 @@ export default function WhatsAppAdminModal({ isOpen, onClose, currentNumber, onS
               required
               style={{
                 width: '100%',
-                padding: '12px',
-                borderRadius: '10px',
-                border: '1px solid #f3d8de',
-                fontSize: '0.95rem',
+                padding: '11px 13px',
+                borderRadius: 'var(--radius-sm)',
+                border: '1px solid var(--border-subtle)',
+                fontSize: '0.94rem',
                 outline: 'none',
-                background: '#fdf4f6',
-                fontWeight: '600'
+                backgroundColor: 'var(--bg-page)',
+                fontWeight: '600',
+                color: 'var(--text-main)'
               }}
             />
           </div>
@@ -90,20 +111,23 @@ export default function WhatsAppAdminModal({ isOpen, onClose, currentNumber, onS
             type="submit"
             style={{
               width: '100%',
-              background: saved ? '#25d366' : 'linear-gradient(135deg, #56001d 0%, #3d0214 100%)',
+              backgroundColor: saved ? 'var(--color-success)' : 'var(--brand-burgundy)',
               color: '#ffffff',
               padding: '12px',
-              borderRadius: '10px',
+              borderRadius: 'var(--radius-sm)',
               fontWeight: '700',
-              fontSize: '0.92rem',
+              fontSize: '0.9rem',
+              border: 'none',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: '6px'
+              gap: '6px',
+              cursor: 'pointer',
+              transition: 'background-color 0.2s ease'
             }}
           >
             {saved ? <Check size={18} /> : null}
-            {saved ? 'Saved Successfully!' : 'Save Target WhatsApp Number'}
+            {saved ? 'Saved Successfully!' : 'Save WhatsApp Number'}
           </button>
         </form>
       </div>

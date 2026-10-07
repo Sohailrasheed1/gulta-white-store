@@ -1,25 +1,23 @@
 import React from 'react';
-import { ShieldCheck, Lock, ChevronRight, PhoneCall, Mail, MapPin } from 'lucide-react';
+import { ShieldCheck, Lock, ChevronRight } from 'lucide-react';
 import BrandLogo from './BrandLogo';
 import { EasyPaisaLogo, JazzCashLogo, MeezanBankLogo, CodLogo } from './PaymentLogos';
 
 export default function Footer() {
   const quickLinks = [
-    { name: 'Home Showcase', href: '#hero' },
-    { name: 'Luxury Skincare Collection', href: '#products' },
-    { name: 'Dermatological Routine Guide', href: '#routine' },
-    { name: 'Verified Customer Reviews', href: '#reviews' },
-    { name: 'FAQ & Order Support', href: '#faq' }
+    { name: 'Collection', href: '#products' },
+    { name: 'Skincare Regimen', href: '#routine' },
+    { name: 'Customer Reviews', href: '#reviews' },
+    { name: 'FAQ & Shipping Policy', href: '#faq' }
   ];
 
   return (
     <footer
       style={{
-        backgroundColor: '#140006',
-        backgroundImage: 'radial-gradient(ellipse at 50% 0%, #26000c 0%, #140006 85%)',
-        color: '#ebd390',
-        padding: 'clamp(3rem, 6vw, 5rem) 0 clamp(6rem, 10vw, 3.5rem) 0', // Extra bottom clearance for mobile bottom nav!
-        borderTop: '2px solid rgba(212, 175, 55, 0.35)',
+        backgroundColor: '#180007',
+        color: '#d8c2cb',
+        padding: 'clamp(2.5rem, 5vw, 4rem) 0 clamp(5.5rem, 8vw, 3rem) 0',
+        borderTop: '1px solid rgba(197, 160, 89, 0.25)',
         position: 'relative',
         zIndex: 10
       }}
@@ -28,27 +26,27 @@ export default function Footer() {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))',
-            gap: 'clamp(2rem, 4vw, 3.5rem)',
-            marginBottom: '3rem'
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))',
+            gap: 'clamp(1.8rem, 3.5vw, 3rem)',
+            marginBottom: '2.5rem'
           }}
         >
           {/* Brand Column */}
           <div>
-            <div style={{ marginBottom: '1.2rem' }}>
-              <BrandLogo size={52} showText={true} textTheme="light" subtitle="ORIGINAL DERMA CARE" />
+            <div style={{ marginBottom: '1rem' }}>
+              <BrandLogo size={46} showText={true} textTheme="light" subtitle="CLINICAL DERMA CARE" />
             </div>
 
-            <p style={{ fontSize: '0.88rem', color: '#f5e4bd', lineHeight: 1.7, marginBottom: '1.4rem' }}>
-              Pakistan's premier luxury dermatological Glutathione skincare brand. 100% original, certified organic formulas crafted to deliver radiant, spot-free glass skin.
+            <p style={{ fontSize: '0.86rem', color: '#e4d3db', lineHeight: 1.65, marginBottom: '1.2rem' }}>
+              Pakistan's premier dermatological Glutathione skincare brand. 100% original, steroid-free formulas crafted for radiant, healthy skin.
             </p>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.82rem', color: '#d4af37', fontWeight: '700' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '0.78rem', color: '#c5a059', fontWeight: '600' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Lock size={15} /> 256-Bit SSL Encrypted & Secure Checkout
+                <Lock size={14} /> 256-Bit SSL Encrypted Checkout
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <ShieldCheck size={15} /> 100% Authentic Glutathione Guarantee
+                <ShieldCheck size={14} /> Authentic Glutathione Guarantee
               </div>
             </div>
           </div>
@@ -57,45 +55,35 @@ export default function Footer() {
           <div>
             <h4
               style={{
-                color: '#d4af37',
-                fontSize: '1.05rem',
+                color: '#c5a059',
+                fontSize: '0.96rem',
                 fontWeight: '800',
-                marginBottom: '1.2rem',
-                fontFamily: 'var(--font-serif)',
-                letterSpacing: '0.5px',
-                borderBottom: '1px solid rgba(212, 175, 55, 0.25)',
-                paddingBottom: '8px',
-                display: 'inline-block'
+                marginBottom: '1rem',
+                letterSpacing: '0.5px'
               }}
             >
               Quick Navigation
             </h4>
 
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {quickLinks.map((link, idx) => (
                 <li key={idx}>
                   <a
                     href={link.href}
                     style={{
-                      color: '#f5e4bd',
-                      fontSize: '0.9rem',
+                      color: '#e4d3db',
+                      fontSize: '0.86rem',
                       fontWeight: '600',
                       textDecoration: 'none',
                       display: 'inline-flex',
                       alignItems: 'center',
-                      gap: '8px',
-                      transition: 'all 0.25s ease'
+                      gap: '6px',
+                      transition: 'color 0.2s ease'
                     }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.color = '#d4af37';
-                      e.currentTarget.style.transform = 'translateX(4px)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.color = '#f5e4bd';
-                      e.currentTarget.style.transform = 'translateX(0)';
-                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = '#c5a059')}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = '#e4d3db')}
                   >
-                    <ChevronRight size={15} color="#d4af37" />
+                    <ChevronRight size={14} color="#c5a059" />
                     <span>{link.name}</span>
                   </a>
                 </li>
@@ -107,68 +95,63 @@ export default function Footer() {
           <div>
             <h4
               style={{
-                color: '#d4af37',
-                fontSize: '1.05rem',
+                color: '#c5a059',
+                fontSize: '0.96rem',
                 fontWeight: '800',
-                marginBottom: '1.2rem',
-                fontFamily: 'var(--font-serif)',
-                letterSpacing: '0.5px',
-                borderBottom: '1px solid rgba(212, 175, 55, 0.25)',
-                paddingBottom: '8px',
-                display: 'inline-block'
+                marginBottom: '1rem',
+                letterSpacing: '0.5px'
               }}
             >
-              Official Payment Methods
+              Payment Methods
             </h4>
 
-            {/* Official Logos */}
             <div
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(115px, 1fr))',
-                gap: '10px',
-                marginBottom: '1.2rem'
+                gridTemplateColumns: 'repeat(2, 1fr)',
+                gap: '8px',
+                marginBottom: '1rem'
               }}
             >
-              <div style={{ filter: 'drop-shadow(0 4px 10px rgba(0,0,0,0.3))' }}>
-                <CodLogo height={34} />
+              <div>
+                <CodLogo height={30} />
               </div>
-              <div style={{ filter: 'drop-shadow(0 4px 10px rgba(0,0,0,0.3))' }}>
-                <EasyPaisaLogo height={34} />
+              <div>
+                <EasyPaisaLogo height={30} />
               </div>
-              <div style={{ filter: 'drop-shadow(0 4px 10px rgba(0,0,0,0.3))' }}>
-                <JazzCashLogo height={34} />
+              <div>
+                <JazzCashLogo height={30} />
               </div>
-              <div style={{ filter: 'drop-shadow(0 4px 10px rgba(0,0,0,0.3))' }}>
-                <MeezanBankLogo height={34} />
+              <div>
+                <MeezanBankLogo height={30} />
               </div>
             </div>
 
-            <p style={{ fontSize: '0.8rem', color: '#ebd390', opacity: 0.9, lineHeight: 1.55 }}>
-              Cash on Delivery (COD) available nationwide across Pakistan. Fast dispatch within 24 hours.
+            <p style={{ fontSize: '0.78rem', color: '#d8c2cb', lineHeight: 1.5 }}>
+              Free Cash on Delivery (COD) available nationwide across Pakistan.
             </p>
           </div>
         </div>
 
-        {/* Bottom Bar: All Rights Reserved Line */}
+        {/* Bottom Copyright */}
         <div
           style={{
-            borderTop: '1px solid rgba(212, 175, 55, 0.25)',
-            paddingTop: '1.8rem',
+            borderTop: '1px solid rgba(197, 160, 89, 0.2)',
+            paddingTop: '1.5rem',
             textAlign: 'center',
-            fontSize: '0.84rem',
-            color: '#f5e4bd',
+            fontSize: '0.8rem',
+            color: '#d8c2cb',
             display: 'flex',
             flexDirection: 'column',
-            gap: '6px',
+            gap: '4px',
             alignItems: 'center'
           }}
         >
-          <div style={{ fontWeight: '700', color: '#ffffff' }}>
-            © {new Date().getFullYear()} Gulta White™ Luxury Skincare Collection. All Rights Reserved.
+          <div style={{ fontWeight: '600', color: '#ffffff' }}>
+            © {new Date().getFullYear()} Gulta White™ Luxury Skincare. All Rights Reserved.
           </div>
-          <div style={{ fontSize: '0.74rem', color: '#d4af37' }}>
-            Formulated Specially for Pakistani Skin & Climate • Certified Safe & Steroid-Free
+          <div style={{ fontSize: '0.72rem', color: '#c5a059' }}>
+            Formulated Specially for Pakistani Skin & Climate • Certified Steroid-Free
           </div>
         </div>
       </div>

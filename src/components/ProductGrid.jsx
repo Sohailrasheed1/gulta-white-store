@@ -1,21 +1,32 @@
 import React from 'react';
 import ProductCard from './ProductCard';
-import { Layers, Crown } from 'lucide-react';
+import { Layers } from 'lucide-react';
 
-export default function ProductGrid({ products, activeCategory, setActiveCategory, onAddToCart, onQuickView, onBuyNow, searchFilter }) {
+export default function ProductGrid({
+  products,
+  activeCategory,
+  setActiveCategory,
+  onAddToCart,
+  onQuickView,
+  onBuyNow,
+  searchFilter
+}) {
   const categories = [
-    { id: 'all', name: 'All Products' },
+    { id: 'all', name: 'All Formulas' },
     { id: 'cream', name: 'Creams & Moisturizers' },
-    { id: 'wash', name: 'Cleansers & Wash' },
-    { id: 'sun', name: 'Sunscreen Shield' },
-    { id: 'set', name: 'Bundles & Kits' }
+    { id: 'wash', name: 'Cleansers' },
+    { id: 'sun', name: 'Sunscreen Protection' },
+    { id: 'set', name: 'Bundles & Complete Sets' }
   ];
 
-  const filteredProducts = products.filter(p => {
+  const filteredProducts = products.filter((p) => {
     const matchesCategory = activeCategory === 'all' || p.category === activeCategory;
-    const matchesSearch = p.title.toLowerCase().includes(searchFilter.toLowerCase()) ||
-                          p.tagline.toLowerCase().includes(searchFilter.toLowerCase()) ||
-                          p.details.toLowerCase().includes(searchFilter.toLowerCase());
+    const query = (searchFilter || '').toLowerCase().trim();
+    const matchesSearch =
+      !query ||
+      p.title.toLowerCase().includes(query) ||
+      p.tagline.toLowerCase().includes(query) ||
+      p.details.toLowerCase().includes(query);
     return matchesCategory && matchesSearch;
   });
 
@@ -23,52 +34,46 @@ export default function ProductGrid({ products, activeCategory, setActiveCategor
     <section
       id="products"
       style={{
-        padding: 'clamp(2.5rem, 5vw, 5rem) 0',
-        backgroundColor: '#fcf8f9',
-        backgroundImage: 'radial-gradient(ellipse at 50% 0%, #fdf2f5 0%, #fcf8f9 70%)',
-        overflow: 'hidden'
+        padding: 'clamp(2.5rem, 5vw, 4.5rem) 0',
+        backgroundColor: 'var(--bg-page)',
+        borderBottom: '1px solid var(--border-card)'
       }}
     >
       <div className="container">
-        
         {/* Section Header */}
-        <div style={{ textAlign: 'center', maxWidth: '680px', margin: '0 auto 2.2rem auto', padding: '0 0.5rem' }}>
-          <div
+        <div style={{ textAlign: 'center', maxWidth: '640px', margin: '0 auto 2rem auto', padding: '0 0.5rem' }}>
+          <span
             style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-              color: '#d4af37',
+              display: 'inline-block',
+              color: 'var(--gold-primary)',
               fontWeight: '800',
               fontSize: '0.74rem',
               textTransform: 'uppercase',
-              letterSpacing: '1.8px',
+              letterSpacing: '1.5px',
               marginBottom: '6px'
             }}
           >
-            <Crown size={15} /> Certified Skincare Science
-          </div>
-          
+            Clinical Formulations
+          </span>
+
           <h2
             style={{
-              fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(1.4rem, 3.5vw, 2.4rem)',
-              fontWeight: '800',
-              color: '#1e050c',
+              fontSize: 'clamp(1.5rem, 3.5vw, 2.3rem)',
+              fontWeight: '900',
+              color: 'var(--text-main)',
               marginBottom: '0.6rem',
-              lineHeight: 1.25,
-              wordBreak: 'break-word'
+              lineHeight: 1.25
             }}
           >
-            Signature <span className="gold-shimmer-text">Gulta White™</span> Range
+            Signature Skincare Collection
           </h2>
-          
-          <p style={{ fontSize: '0.88rem', color: '#7e5260', lineHeight: 1.55 }}>
-            Formulated specifically for Pakistani climate & skin types. Enriched with medical-grade L-Glutathione, Niacinamide & Vitamin C.
+
+          <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: 1.55 }}>
+            Medical-grade L-Glutathione, Vitamin C & Niacinamide formulas crafted specifically for radiant, even-toned skin.
           </p>
         </div>
 
-        {/* Scrollable Category Filter Pills for Mobile */}
+        {/* Category Filter Pills (Horizontal Scrollable on Mobile) */}
         <div
           style={{
             display: 'flex',
@@ -88,17 +93,18 @@ export default function ProductGrid({ products, activeCategory, setActiveCategor
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
                 style={{
-                  padding: '8px 16px',
+                  padding: '9px 18px',
                   borderRadius: '9999px',
-                  fontSize: '0.82rem',
-                  fontWeight: '800',
-                  border: isActive ? 'none' : '1px solid rgba(212, 175, 55, 0.3)',
-                  background: isActive ? 'linear-gradient(135deg, #3b0014 0%, #140006 100%)' : '#ffffff',
-                  color: isActive ? '#fef08a' : '#4a1c29',
-                  boxShadow: isActive ? '0 6px 18px rgba(59, 0, 20, 0.25)' : '0 2px 6px rgba(0,0,0,0.02)',
+                  fontSize: '0.84rem',
+                  fontWeight: '700',
+                  border: isActive ? '1px solid var(--brand-burgundy)' : '1px solid var(--border-card)',
+                  backgroundColor: isActive ? 'var(--brand-burgundy)' : '#ffffff',
+                  color: isActive ? '#fbeec8' : 'var(--text-main)',
+                  boxShadow: isActive ? 'var(--shadow-sm)' : 'none',
                   whiteSpace: 'nowrap',
                   flexShrink: 0,
-                  cursor: 'pointer'
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease'
                 }}
               >
                 {cat.name}
@@ -107,40 +113,44 @@ export default function ProductGrid({ products, activeCategory, setActiveCategor
           })}
         </div>
 
-        {/* Grid Display */}
+        {/* Empty State */}
         {filteredProducts.length === 0 ? (
           <div
             style={{
               textAlign: 'center',
-              padding: '2.5rem 1rem',
+              padding: '3rem 1rem',
               backgroundColor: '#ffffff',
-              borderRadius: '20px',
-              border: '1px solid rgba(212, 175, 55, 0.3)'
+              borderRadius: 'var(--radius-lg)',
+              border: '1px solid var(--border-card)'
             }}
           >
-            <Layers size={44} color="#7e5260" style={{ marginBottom: '0.8rem' }} />
-            <h3 style={{ fontSize: '1.15rem', color: '#3b0014', marginBottom: '4px' }}>No products matching your query</h3>
-            <p style={{ color: '#7e5260', fontSize: '0.85rem' }}>Try searching another term or reset the category.</p>
+            <Layers size={40} color="var(--text-muted)" style={{ marginBottom: '0.8rem' }} />
+            <h3 style={{ fontSize: '1.15rem', color: 'var(--text-main)', marginBottom: '4px' }}>
+              No formulas matching your search
+            </h3>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.86rem' }}>
+              Try searching a different ingredient or reset the category filter.
+            </p>
             <button
-              onClick={() => { setActiveCategory('all'); }}
-              className="btn-royal-maroon"
+              onClick={() => setActiveCategory('all')}
+              className="btn-primary-action"
               style={{
-                marginTop: '1rem',
-                padding: '8px 20px',
+                marginTop: '1.2rem',
+                padding: '9px 20px',
                 borderRadius: '9999px',
-                fontSize: '0.82rem',
-                cursor: 'pointer'
+                fontSize: '0.84rem'
               }}
             >
               Reset Filters
             </button>
           </div>
         ) : (
+          /* Products Grid */
           <div
             className="responsive-grid-products"
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 280px), 1fr))',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(270px, 1fr))',
               gap: '1.5rem'
             }}
           >
@@ -155,7 +165,6 @@ export default function ProductGrid({ products, activeCategory, setActiveCategor
             ))}
           </div>
         )}
-
       </div>
     </section>
   );

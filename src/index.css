@@ -1,43 +1,70 @@
 /* ==========================================================================
-   GULTA WHITE™ - ULTRA LUXURY & PERFECT MOBILE RESPONSIVE SYSTEM
+   GULTA WHITE™ - UNIFIED DESIGN SYSTEM & PRODUCTION STYLESHEET
+   Dermatological Luxury Skincare • Modern E-Commerce Architecture
    ========================================================================== */
 
 :root {
-  /* Royal Velvet Palette */
-  --royal-950: #140006;
-  --royal-900: #26000c;
-  --royal-850: #3b0014;
-  --royal-800: #56001d;
-  --royal-700: #750028;
+  /* Brand Core Palette */
+  --brand-velvet: #23010b;
+  --brand-burgundy: #380113;
+  --brand-burgundy-light: #520620;
+  --brand-plum: #180007;
 
-  /* Gold Palette */
-  --gold-solid: #d4af37;
-  --gold-light: #fef08a;
+  /* Accent Gold Palette (Muted Champagne Luxury, Not Loud Yellow) */
+  --gold-primary: #c5a059;
+  --gold-hover: #b38d44;
+  --gold-dark: #967029;
+  --gold-light: #f7eed9;
+  --gold-border: rgba(197, 160, 89, 0.32);
 
-  /* Surfaces */
-  --bg-pearl: #fcf8f9;
-  --bg-card: #ffffff;
+  /* Functional Surfaces */
+  --bg-page: #faf7f7;
+  --bg-surface: #ffffff;
+  --bg-subtle: #f6f0f2;
+  --bg-overlay: rgba(24, 0, 7, 0.72);
 
-  /* Typography */
-  --text-dark: #1e050c;
-  --text-body: #4a1c29;
-  --text-muted: #7e5260;
+  /* Text & Contrast */
+  --text-main: #19030a;
+  --text-secondary: #573a44;
+  --text-muted: #826670;
+  --text-inverted: #ffffff;
+  --text-gold-light: #fbeec8;
 
-  /* Fonts */
-  --font-serif: 'Playfair Display', Georgia, serif;
-  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  /* Status & Accents */
+  --color-success: #15803d;
+  --color-success-bg: #ecfdf5;
+  --color-whatsapp: #25d366;
+  --color-error: #dc2626;
+
+  /* Borders & Dividers */
+  --border-subtle: #ebdce0;
+  --border-card: #f0e4e7;
+  --border-gold: rgba(197, 160, 89, 0.35);
+
+  /* Unified Font Family */
+  --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  /* Radii */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Elevation Shadows */
+  --shadow-xs: 0 1px 2px rgba(24, 0, 7, 0.04);
+  --shadow-sm: 0 2px 6px rgba(24, 0, 7, 0.05);
+  --shadow-md: 0 6px 18px rgba(24, 0, 7, 0.07);
+  --shadow-lg: 0 14px 34px rgba(24, 0, 7, 0.1);
+  --shadow-xl: 0 24px 56px rgba(24, 0, 7, 0.2);
 }
 
+/* Base Reset & Smoothness */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-
-html, body {
-  width: 100%;
-  max-width: 100vw;
-  overflow-x: hidden !important;
 }
 
 html {
@@ -47,95 +74,182 @@ html {
 }
 
 body {
-  background-color: var(--bg-pearl);
-  color: var(--text-body);
-  font-family: var(--font-sans);
-  line-height: 1.6;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden !important;
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  font-family: var(--font-family);
+  line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Animations */
-@keyframes shine {
-  to { background-position: 200% center; }
+/* Accessible Container */
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  box-sizing: border-box;
 }
 
-@keyframes slideFromLeft {
-  from { transform: translateX(-100%); }
-  to { transform: translateX(0); }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-/* Gold Shimmer Text Effect */
-.gold-shimmer-text {
-  background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #d4af37 50%, #fbf5b7 75%, #aa771c 100%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shine 4s linear infinite;
-  display: inline-block;
-}
-
-/* Buttons */
-.btn-gold-foil {
-  background: linear-gradient(135deg, #bf953f 0%, #d4af37 50%, #aa771c 100%);
-  color: #140006;
+/* Typography Hierarchy Standards */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family);
+  color: var(--text-main);
   font-weight: 800;
-  border: none;
-  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.35);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 
-.btn-gold-foil:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 14px 35px rgba(212, 175, 55, 0.5);
+p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 
-.btn-royal-maroon {
-  background: linear-gradient(135deg, #3b0014 0%, #140006 100%);
+button, input, select, textarea {
+  font-family: var(--font-family);
+}
+
+/* Subtle Shimmer Accent (Tasteful, Never Flashy) */
+.brand-gold-text {
+  color: var(--gold-primary);
+  font-weight: 800;
+}
+
+/* Core Button System */
+.btn-primary-action {
+  background-color: var(--brand-burgundy);
   color: #ffffff;
   font-weight: 700;
-  border: 1px solid rgba(212, 175, 55, 0.35);
-  box-shadow: 0 8px 25px rgba(59, 0, 20, 0.3);
-  transition: all 0.3s ease;
+  font-size: 0.92rem;
+  border: 1px solid var(--gold-border);
+  border-radius: var(--radius-md);
+  padding: 12px 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
 }
 
-.btn-royal-maroon:hover {
-  transform: translateY(-2px);
-  border-color: rgba(212, 175, 55, 0.8);
-  box-shadow: 0 14px 35px rgba(59, 0, 20, 0.45);
+.btn-primary-action:hover {
+  background-color: var(--brand-burgundy-light);
+  border-color: var(--gold-primary);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
 }
 
-/* Glassmorphism Cards */
-.luxury-glass-light {
-  background: rgba(255, 255, 255, 0.94);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(212, 175, 55, 0.25);
-  box-shadow: 0 16px 40px rgba(59, 0, 20, 0.08);
+.btn-primary-action:active {
+  transform: translateY(0);
 }
 
-.luxury-glass-dark {
-  background: rgba(38, 0, 12, 0.94);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(212, 175, 55, 0.35);
+.btn-gold-action {
+  background-color: var(--gold-primary);
+  color: var(--brand-plum);
+  font-weight: 800;
+  font-size: 0.92rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-md);
+  padding: 12px 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(197, 160, 89, 0.28);
+  text-decoration: none;
+}
+
+.btn-gold-action:hover {
+  background-color: var(--gold-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(197, 160, 89, 0.38);
+}
+
+.btn-gold-action:active {
+  transform: translateY(0);
+}
+
+.btn-whatsapp-action {
+  background-color: var(--color-whatsapp);
   color: #ffffff;
+  font-weight: 800;
+  font-size: 0.92rem;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 12px 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.28);
+  text-decoration: none;
 }
 
-/* Modal Overlay Base */
+.btn-whatsapp-action:hover {
+  background-color: #20bd5a;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.38);
+}
+
+.btn-whatsapp-action:active {
+  transform: translateY(0);
+}
+
+.btn-outline-action {
+  background-color: #ffffff;
+  color: var(--brand-burgundy);
+  font-weight: 700;
+  font-size: 0.92rem;
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 12px 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-outline-action:hover {
+  border-color: var(--brand-burgundy);
+  background-color: var(--bg-subtle);
+}
+
+/* Premium Card Styles */
+.product-card-surface {
+  background-color: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.product-card-surface:hover {
+  border-color: var(--gold-primary);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Modals & Overlays */
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(20, 0, 6, 0.8);
+  background: var(--bg-overlay);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   z-index: 2000;
@@ -143,26 +257,45 @@ body {
   align-items: center;
   justify-content: center;
   padding: 1rem;
+  animation: fadeInModal 0.2s ease-out;
 }
 
 .drawer-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(20, 0, 6, 0.75);
+  background: var(--bg-overlay);
   backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   z-index: 2000;
   display: flex;
   justify-content: flex-end;
+  animation: fadeInModal 0.2s ease-out;
 }
 
-.container {
-  width: 100%;
-  max-width: 1260px;
-  margin: 0 auto;
-  padding: 0 1.25rem;
-  box-sizing: border-box;
+@keyframes fadeInModal {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
+@keyframes slideFromRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slideFromBottom {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.animate-slide-right {
+  animation: slideFromRight 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-slide-bottom {
+  animation: slideFromBottom 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Desktop vs Mobile Controls */
 .mobile-only-bottom-nav {
   display: none !important;
 }
@@ -175,20 +308,36 @@ body {
   display: none;
 }
 
+/* Custom Scrollbar for Smoothness */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #f1eaed;
+}
+::-webkit-scrollbar-thumb {
+  background: #c5a059;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #967029;
+}
+
 /* ==========================================================================
-   STRICT MOBILE BREAKPOINTS (< 768px & < 500px)
+   MOBILE & TABLET BREAKPOINTS (< 768px & < 500px)
+   Native App Shopping UX
    ========================================================================== */
 
 @media (max-width: 768px) {
   body {
-    padding-bottom: 75px !important; /* Safety room for bottom app nav */
+    padding-bottom: 74px !important; /* Space for sticky bottom app bar */
   }
 
   .container {
-    padding: 0 0.85rem !important;
+    padding: 0 1rem !important;
   }
 
-  /* Header mobile adaptations */
   .desktop-nav {
     display: none !important;
   }
@@ -201,30 +350,14 @@ body {
     display: none !important;
   }
 
-  .header-cart-btn {
-    width: 38px !important;
-    height: 38px !important;
-    padding: 0 !important;
-    justify-content: center !important;
-    border-radius: 50% !important;
-  }
-
-  .desktop-only-announcement,
-  .desktop-only-bullet {
+  .desktop-only-announcement {
     display: none !important;
   }
 
   .mobile-burger-btn {
     display: flex !important;
-    width: 38px !important;
-    height: 38px !important;
-    background: rgba(212, 175, 55, 0.14) !important;
-    border: 1px solid rgba(212, 175, 55, 0.45) !important;
-    color: #d4af37 !important;
-    border-radius: 12px !important;
   }
 
-  /* Mobile bottom app bar */
   .mobile-only-bottom-nav {
     display: flex !important;
   }
@@ -233,88 +366,68 @@ body {
     display: none !important;
   }
 
-  /* Headings on mobile: Fix oversized fonts */
+  /* Typography scale refinements for mobile */
   h1, .hero-headline {
-    font-size: 1.55rem !important;
-    line-height: 1.22 !important;
-    letter-spacing: -0.3px !important;
+    font-size: 1.7rem !important;
+    line-height: 1.2 !important;
+    letter-spacing: -0.03em !important;
   }
 
   h2 {
-    font-size: 1.38rem !important;
+    font-size: 1.4rem !important;
     line-height: 1.25 !important;
-    letter-spacing: -0.2px !important;
   }
 
   h3 {
-    font-size: 1.12rem !important;
+    font-size: 1.15rem !important;
     line-height: 1.3 !important;
   }
 
-  /* Grid Layout Fixes for Mobile */
+  /* Grids */
   .responsive-grid-2col {
     grid-template-columns: 1fr !important;
-    gap: 1.25rem !important;
+    gap: 1.5rem !important;
   }
 
   .responsive-grid-products {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)) !important;
     gap: 1.15rem !important;
-    width: 100% !important;
   }
 
-  .responsive-hero-img {
-    height: 230px !important;
-  }
-
-  .hero-subtext {
-    font-size: 0.86rem !important;
-    line-height: 1.5 !important;
-  }
-
-  .hero-action-buttons {
-    flex-direction: column !important;
-    width: 100% !important;
-    gap: 8px !important;
-  }
-
-  .hero-action-buttons button {
-    width: 100% !important;
-    justify-content: center !important;
-  }
-
-  /* Mobile Native Bottom Sheet Overlay */
+  /* Modal behavior on mobile: Native Bottom Sheet */
   .modal-overlay {
     align-items: flex-end !important;
     padding: 0 !important;
   }
 
   .modal-overlay > div {
-    max-height: 88vh !important;
     width: 100% !important;
     max-width: 100% !important;
-    border-radius: 24px 24px 0 0 !important;
+    max-height: 90vh !important;
+    border-radius: 22px 22px 0 0 !important;
+    border-bottom: none !important;
+    animation: slideFromBottom 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
   }
 
   .mobile-sheet-drag-handle {
-    width: 44px;
-    height: 5px;
-    background-color: rgba(212, 175, 55, 0.4);
+    width: 40px;
+    height: 4px;
+    background-color: var(--border-subtle);
     border-radius: 9999px;
-    margin: 10px auto 4px auto;
+    margin: 8px auto 4px auto;
   }
 }
 
 @media (max-width: 480px) {
-  h1, .hero-headline {
-    font-size: 1.45rem !important;
+  .responsive-grid-products {
+    grid-template-columns: 1fr !important;
   }
 
-  h2 {
-    font-size: 1.28rem !important;
+  h1, .hero-headline {
+    font-size: 1.5rem !important;
   }
 
   .container {
-    padding: 0 0.75rem !important;
+    padding: 0 0.85rem !important;
   }
 }

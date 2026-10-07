@@ -14,12 +14,13 @@ export default function Header({
   whatsappNumber
 }) {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 15);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -31,14 +32,14 @@ export default function Header({
 
   return (
     <>
-      {/* Top Announcement Bar - Pure Royal Velvet & Gold */}
+      {/* Top Announcement Bar */}
       <div
         style={{
-          background: 'linear-gradient(90deg, #140006 0%, #22000b 35%, #2a000e 50%, #22000b 65%, #140006 100%)',
-          color: '#fef08a',
+          backgroundColor: '#180007',
+          color: '#fbeec8',
           fontSize: '0.74rem',
-          padding: '7px 1rem',
-          borderBottom: '1px solid rgba(212, 175, 55, 0.22)',
+          padding: '6px 1rem',
+          borderBottom: '1px solid rgba(197, 160, 89, 0.2)',
           position: 'relative',
           zIndex: 100
         }}
@@ -49,28 +50,27 @@ export default function Header({
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
-            gap: '8px',
-            flexWrap: 'nowrap'
+            gap: '12px'
           }}
         >
           {/* Left Announcement */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', overflow: 'hidden', whiteSpace: 'nowrap' }}>
             <span
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '5px',
+                gap: '6px',
                 fontWeight: '700',
-                color: '#fef08a',
-                fontSize: '0.72rem'
+                color: '#fbeec8',
+                fontSize: '0.73rem'
               }}
             >
-              <Truck size={13} color="#d4af37" style={{ flexShrink: 0 }} />
-              <strong>FREE EXPRESS SHIPPING</strong> Across Pakistan
+              <Truck size={13} color="#c5a059" style={{ flexShrink: 0 }} />
+              <strong>FREE EXPRESS SHIPPING</strong> All Across Pakistan
             </span>
-            <span style={{ color: 'rgba(212, 175, 55, 0.4)' }} className="desktop-only-bullet">•</span>
-            <span style={{ color: '#ebd390', fontWeight: '500', fontSize: '0.72rem' }} className="desktop-only-announcement">
-              Cash on Delivery (COD) Available • 2-4 Days
+            <span style={{ color: 'rgba(197, 160, 89, 0.4)' }} className="desktop-only-announcement">•</span>
+            <span style={{ color: '#d8c2cb', fontWeight: '500', fontSize: '0.72rem' }} className="desktop-only-announcement">
+              Cash on Delivery (COD) Available • 2-4 Days Delivery
             </span>
           </div>
 
@@ -83,19 +83,20 @@ export default function Header({
                 alignItems: 'center',
                 gap: '5px',
                 color: '#ffffff',
-                background: 'rgba(37, 211, 102, 0.16)',
-                border: '1px solid rgba(37, 211, 102, 0.4)',
+                background: 'rgba(37, 211, 102, 0.15)',
+                border: '1px solid rgba(37, 211, 102, 0.35)',
                 padding: '3px 10px',
                 borderRadius: '9999px',
                 fontSize: '0.7rem',
-                fontWeight: '800',
+                fontWeight: '700',
                 cursor: 'pointer',
-                transition: 'all 0.2s ease'
+                transition: 'background 0.2s ease'
               }}
               title="Click to chat on WhatsApp"
+              aria-label="Direct WhatsApp Contact"
             >
               <PhoneCall size={11} color="#25d366" />
-              <span className="desktop-only-announcement">WhatsApp:</span> 0300-1234567
+              <span className="desktop-only-announcement">Helpline:</span> 0300-1234567
             </button>
 
             {onOpenAdmin && (
@@ -106,16 +107,17 @@ export default function Header({
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '4px',
-                  color: '#ebd390',
-                  background: 'rgba(212, 175, 55, 0.12)',
-                  border: '1px solid rgba(212, 175, 55, 0.35)',
+                  color: '#c5a059',
+                  background: 'transparent',
+                  border: '1px solid rgba(197, 160, 89, 0.25)',
                   padding: '3px 8px',
                   borderRadius: '9999px',
                   fontSize: '0.68rem',
-                  fontWeight: '700',
+                  fontWeight: '600',
                   cursor: 'pointer'
                 }}
                 title="Configure WhatsApp order recipient"
+                aria-label="Admin settings"
               >
                 Config
               </button>
@@ -124,20 +126,18 @@ export default function Header({
         </div>
       </div>
 
-      {/* Main Luxury Sticky Header - STRICT BRAND THEME (Royal Velvet Burgundy & Gold) */}
+      {/* Main Luxury Sticky Header */}
       <header
         style={{
           position: 'sticky',
           top: 0,
           zIndex: 900,
-          background: isScrolled
-            ? 'rgba(38, 0, 12, 0.96)'
-            : 'linear-gradient(135deg, #26000c 0%, #3b0014 50%, #1e0009 100%)',
-          backdropFilter: 'blur(16px)',
-          WebkitBackdropFilter: 'blur(16px)',
-          boxShadow: '0 8px 30px rgba(20, 0, 6, 0.45)',
-          transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
-          borderBottom: '1px solid rgba(212, 175, 55, 0.35)'
+          backgroundColor: isScrolled ? 'rgba(35, 1, 11, 0.98)' : '#23010b',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
+          boxShadow: isScrolled ? '0 4px 20px rgba(24, 0, 7, 0.35)' : 'none',
+          transition: 'all 0.25s ease',
+          borderBottom: '1px solid rgba(197, 160, 89, 0.25)'
         }}
       >
         <div
@@ -146,135 +146,109 @@ export default function Header({
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            padding: isScrolled ? '10px 1rem' : '12px 1rem',
-            transition: 'padding 0.3s ease'
+            padding: isScrolled ? '10px 1rem' : '14px 1rem',
+            transition: 'padding 0.25s ease'
           }}
         >
-          {/* Left: Mobile Hamburger & Brand Logo */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            {/* Mobile Hamburger Menu Button - Styled in Royal Velvet & Gold Theme */}
+          {/* Left Group: Mobile Menu & Brand Logo */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
             <button
               onClick={onOpenMobileDrawer}
               className="mobile-burger-btn"
               style={{
                 width: '38px',
                 height: '38px',
-                borderRadius: '12px',
-                background: 'rgba(212, 175, 55, 0.12)',
-                border: '1px solid rgba(212, 175, 55, 0.45)',
-                color: '#d4af37',
+                borderRadius: '10px',
+                backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                border: '1px solid rgba(197, 160, 89, 0.3)',
+                color: '#c5a059',
                 display: 'none',
                 alignItems: 'center',
                 justifyContent: 'center',
                 cursor: 'pointer',
-                flexShrink: 0,
-                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.25)',
-                transition: 'all 0.2s ease'
+                flexShrink: 0
               }}
-              aria-label="Open App Menu"
+              aria-label="Open Navigation Menu"
             >
-              <Menu size={20} color="#d4af37" />
+              <Menu size={20} color="#c5a059" />
             </button>
 
-            {/* Brand Logo with Circular Emblem & Light/Gold Typography */}
             <a href="#" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-              <BrandLogo size={isScrolled ? 40 : 44} showText={true} textTheme="light" subtitle="DERMATOLOGICAL LUXURY" />
+              <BrandLogo size={isScrolled ? 38 : 42} showText={true} textTheme="light" subtitle="DERMATOLOGICAL LUXURY" />
             </a>
           </div>
 
           {/* Center: Desktop Navigation Bar */}
-          <nav className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '26px' }}>
-            <a
-              href="#hero"
-              style={{
-                fontWeight: '700',
-                color: '#ffffff',
-                fontSize: '0.92rem',
-                textDecoration: 'none',
-                position: 'relative',
-                transition: 'color 0.2s ease',
-                padding: '6px 0'
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = '#d4af37')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = '#ffffff')}
-            >
-              Home
-            </a>
-
+          <nav className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '28px' }}>
             <a
               href="#products"
               onClick={() => setActiveCategory && setActiveCategory('all')}
               style={{
                 fontWeight: '600',
-                color: '#ebd390',
-                fontSize: '0.92rem',
+                color: '#fbeec8',
+                fontSize: '0.9rem',
                 textDecoration: 'none',
-                position: 'relative',
                 transition: 'color 0.2s ease',
                 padding: '6px 0'
               }}
               onMouseEnter={(e) => (e.currentTarget.style.color = '#ffffff')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = '#ebd390')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = '#fbeec8')}
             >
-              Signature Collection
+              Collection
             </a>
 
             <a
               href="#routine"
               style={{
                 fontWeight: '600',
-                color: '#ebd390',
-                fontSize: '0.92rem',
+                color: '#d8c2cb',
+                fontSize: '0.9rem',
                 textDecoration: 'none',
-                position: 'relative',
                 transition: 'color 0.2s ease',
                 padding: '6px 0'
               }}
               onMouseEnter={(e) => (e.currentTarget.style.color = '#ffffff')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = '#ebd390')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = '#d8c2cb')}
             >
-              Regimen Guide
+              Skincare Routine
             </a>
 
             <a
               href="#reviews"
               style={{
                 fontWeight: '600',
-                color: '#ebd390',
-                fontSize: '0.92rem',
+                color: '#d8c2cb',
+                fontSize: '0.9rem',
                 textDecoration: 'none',
-                position: 'relative',
                 transition: 'color 0.2s ease',
                 padding: '6px 0'
               }}
               onMouseEnter={(e) => (e.currentTarget.style.color = '#ffffff')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = '#ebd390')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = '#d8c2cb')}
             >
-              Real Reviews
+              Reviews
             </a>
 
             <a
               href="#faq"
               style={{
                 fontWeight: '600',
-                color: '#ebd390',
-                fontSize: '0.92rem',
+                color: '#d8c2cb',
+                fontSize: '0.9rem',
                 textDecoration: 'none',
-                position: 'relative',
                 transition: 'color 0.2s ease',
                 padding: '6px 0'
               }}
               onMouseEnter={(e) => (e.currentTarget.style.color = '#ffffff')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = '#ebd390')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = '#d8c2cb')}
             >
-              Support & FAQ
+              FAQ & Shipping
             </a>
           </nav>
 
-          {/* Right Group: Search Box & Gold Foil Cart Trigger */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexShrink: 0 }}>
-            
-            {/* Desktop Search Box in Dark Glass Theme */}
+          {/* Right Group: Search Box & Bag Button */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0 }}>
+            {/* Desktop Search Box */}
             <div
               className="desktop-search-box"
               style={{
@@ -282,13 +256,13 @@ export default function Header({
                 alignItems: 'center',
                 backgroundColor: 'rgba(255, 255, 255, 0.08)',
                 borderRadius: '9999px',
-                padding: '7px 16px',
-                border: '1px solid rgba(212, 175, 55, 0.35)',
-                width: '200px',
-                transition: 'all 0.3s ease'
+                padding: '7px 14px',
+                border: '1px solid rgba(197, 160, 89, 0.28)',
+                width: '210px',
+                transition: 'border-color 0.2s ease'
               }}
             >
-              <Search size={14} color="#d4af37" style={{ marginRight: '8px', flexShrink: 0 }} />
+              <Search size={14} color="#c5a059" style={{ marginRight: '8px', flexShrink: 0 }} />
               <input
                 type="text"
                 placeholder="Search formulas..."
@@ -310,81 +284,148 @@ export default function Header({
                   style={{
                     background: 'none',
                     border: 'none',
-                    color: '#ebd390',
+                    color: '#c5a059',
                     padding: 0,
                     cursor: 'pointer',
                     display: 'flex',
                     alignItems: 'center'
                   }}
+                  aria-label="Clear search"
                 >
                   <X size={14} />
                 </button>
               )}
             </div>
 
-            {/* Shopping Cart Button - Gold Foil with Deep Velvet Accents */}
+            {/* Mobile Search Toggle Button */}
+            <button
+              onClick={() => setIsMobileSearchOpen(!isMobileSearchOpen)}
+              className="mobile-burger-btn"
+              style={{
+                width: '38px',
+                height: '38px',
+                borderRadius: '10px',
+                backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                border: '1px solid rgba(197, 160, 89, 0.3)',
+                color: '#c5a059',
+                display: 'none',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer'
+              }}
+              aria-label="Search"
+            >
+              <Search size={18} color="#c5a059" />
+            </button>
+
+            {/* Shopping Bag Button */}
             <button
               onClick={onOpenCart}
               className="header-cart-btn"
               style={{
                 position: 'relative',
                 height: '40px',
-                padding: '0 15px',
+                padding: '0 16px',
                 borderRadius: '9999px',
-                background: 'linear-gradient(135deg, #bf953f 0%, #d4af37 50%, #aa771c 100%)',
-                border: '1.5px solid rgba(255, 255, 255, 0.35)',
-                color: '#140006',
+                backgroundColor: 'var(--gold-primary)',
+                border: '1px solid rgba(255, 255, 255, 0.3)',
+                color: 'var(--brand-velvet)',
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '7px',
+                gap: '8px',
                 cursor: 'pointer',
-                boxShadow: '0 4px 18px rgba(212, 175, 55, 0.35)',
-                transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+                boxShadow: '0 4px 12px rgba(197, 160, 89, 0.3)',
+                transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
                 flexShrink: 0
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 8px 24px rgba(212, 175, 55, 0.5)';
+                e.currentTarget.style.backgroundColor = 'var(--gold-hover)';
+                e.currentTarget.style.transform = 'translateY(-1px)';
               }}
               onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'var(--gold-primary)';
                 e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 18px rgba(212, 175, 55, 0.35)';
               }}
-              aria-label="Shopping Cart"
+              aria-label={`Shopping Cart with ${cartCount} items`}
             >
               <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-                <ShoppingBag size={18} color="#140006" />
+                <ShoppingBag size={18} color="#180007" />
                 {cartCount > 0 && (
                   <span
                     style={{
                       position: 'absolute',
                       top: '-8px',
                       right: '-10px',
-                      background: '#140006',
-                      color: '#fef08a',
+                      backgroundColor: '#180007',
+                      color: '#fbeec8',
                       fontSize: '0.66rem',
-                      fontWeight: '900',
+                      fontWeight: '800',
                       width: '18px',
                       height: '18px',
                       borderRadius: '50%',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      border: '2px solid #d4af37',
-                      boxShadow: '0 2px 6px rgba(0,0,0,0.4)'
+                      border: '1.5px solid #c5a059'
                     }}
                   >
                     {cartCount}
                   </span>
                 )}
               </div>
-              <span className="desktop-cart-label" style={{ fontSize: '0.82rem', fontWeight: '900', color: '#140006' }}>
-                Cart {cartCount > 0 ? `(${cartCount})` : ''}
+              <span className="desktop-cart-label" style={{ fontSize: '0.84rem', fontWeight: '800', color: '#180007' }}>
+                Bag {cartCount > 0 ? `(${cartCount})` : ''}
               </span>
             </button>
-
           </div>
         </div>
+
+        {/* Mobile Search Expandable Bar */}
+        {isMobileSearchOpen && (
+          <div
+            style={{
+              padding: '8px 1rem 12px 1rem',
+              backgroundColor: '#180007',
+              borderTop: '1px solid rgba(197, 160, 89, 0.2)'
+            }}
+          >
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                borderRadius: '10px',
+                padding: '8px 12px',
+                border: '1px solid rgba(197, 160, 89, 0.3)'
+              }}
+            >
+              <Search size={16} color="#c5a059" style={{ marginRight: '8px', flexShrink: 0 }} />
+              <input
+                type="text"
+                placeholder="Search formulas or ingredients..."
+                value={searchFilter}
+                onChange={(e) => setSearchFilter(e.target.value)}
+                autoFocus
+                style={{
+                  border: 'none',
+                  outline: 'none',
+                  background: 'transparent',
+                  fontSize: '0.9rem',
+                  width: '100%',
+                  color: '#ffffff'
+                }}
+              />
+              {searchFilter && (
+                <button
+                  onClick={() => setSearchFilter('')}
+                  style={{ background: 'none', border: 'none', color: '#c5a059', padding: 0, cursor: 'pointer' }}
+                >
+                  <X size={16} />
+                </button>
+              )}
+            </div>
+          </div>
+        )}
       </header>
     </>
   );

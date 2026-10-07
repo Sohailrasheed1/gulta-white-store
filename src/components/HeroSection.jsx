@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { Sparkles, ArrowRight, Star, Crown, CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, Star, CheckCircle2, ChevronLeft, ChevronRight, ShieldCheck } from 'lucide-react';
 
 export default function HeroSection({ onShopClick, onQuickBuyKit }) {
   const slides = [
     {
       img: 'assets/images/gulta_hero_banner_1790882624087.jpg',
-      badge: 'FLAT 25% OFF • Complete Regimen',
+      badge: 'Signature Regimen',
       title: 'Complete 4-Step Radiance Kit',
-      subtitle: 'Face Wash + Day Cream + Night Cream + Sunscreen'
+      subtitle: 'Face Wash + Day Cream + Night Cream + Matte Sunscreen'
     },
     {
       img: 'assets/images/complete-set.jpg',
-      badge: 'Certified Glutathione Formula',
-      title: 'Glass Skin Radiance',
-      subtitle: 'Visible glow & dark spot removal within 14 days'
+      badge: 'Medical-Grade Actives',
+      title: 'Pure L-Glutathione Formula',
+      subtitle: 'Visible radiance & dark spot reduction within 14 days'
     }
   ];
 
@@ -22,230 +22,238 @@ export default function HeroSection({ onShopClick, onQuickBuyKit }) {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000);
+    }, 6000);
     return () => clearInterval(timer);
-  }, []);
+  }, [slides.length]);
 
   return (
-    <section id="hero" style={{
-      position: 'relative',
-      background: 'radial-gradient(ellipse at 70% 30%, #3b0014 0%, #26000c 55%, #140006 100%)',
-      color: '#ffffff',
-      padding: 'clamp(1.5rem, 4vw, 4rem) 0',
-      overflow: 'hidden',
-      borderBottom: '2px solid rgba(212, 175, 55, 0.3)'
-    }}>
-      <div className="container" style={{ position: 'relative', zIndex: 2, boxSizing: 'border-box' }}>
-        <div className="responsive-grid-2col" style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-          gap: 'clamp(1.2rem, 3vw, 3rem)',
-          alignItems: 'center'
-        }}>
-
-          {/* Left Column Text Content */}
-          <div style={{ maxWidth: '100%', overflow: 'hidden' }}>
-            
-            {/* Rating Pill Bar (Strict 100% Width Fit) */}
-            <div style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-              backgroundColor: 'rgba(212, 175, 55, 0.12)',
-              border: '1px solid rgba(212, 175, 55, 0.35)',
-              padding: '4px 10px',
-              borderRadius: '9999px',
-              marginBottom: '1rem',
-              maxWidth: '100%',
-              boxSizing: 'border-box',
-              overflow: 'hidden'
-            }}>
-              <Crown size={13} color="#d4af37" style={{ flexShrink: 0 }} />
-              <div style={{ display: 'flex', color: '#d4af37', gap: '1px', flexShrink: 0 }}>
+    <section
+      id="hero"
+      style={{
+        position: 'relative',
+        backgroundColor: '#23010b',
+        backgroundImage: 'radial-gradient(circle at 75% 25%, #380113 0%, #23010b 70%)',
+        color: '#ffffff',
+        padding: 'clamp(2rem, 5vw, 4.5rem) 0',
+        overflow: 'hidden',
+        borderBottom: '1px solid rgba(197, 160, 89, 0.25)'
+      }}
+    >
+      <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+        <div
+          className="responsive-grid-2col"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1.1fr 0.9fr',
+            gap: 'clamp(1.5rem, 4vw, 3.5rem)',
+            alignItems: 'center'
+          }}
+        >
+          {/* Left Column Content */}
+          <div>
+            {/* Top Quality Badge */}
+            <div
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                border: '1px solid rgba(197, 160, 89, 0.35)',
+                padding: '5px 12px',
+                borderRadius: '9999px',
+                marginBottom: '1.2rem'
+              }}
+            >
+              <div style={{ display: 'flex', color: '#c5a059', gap: '2px' }}>
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={11} fill="#d4af37" color="#d4af37" />
+                  <Star key={i} size={12} fill="#c5a059" color="#c5a059" />
                 ))}
               </div>
-              <span style={{ fontSize: '0.7rem', fontWeight: '800', color: '#fef08a', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                4.9/5 (2,500+ Verified Reviews)
+              <span style={{ fontSize: '0.74rem', fontWeight: '700', color: '#fbeec8' }}>
+                4.9 / 5.0 Rating • 2,500+ Verified Buyers
               </span>
             </div>
 
-            {/* Headline */}
-            <h1 className="hero-headline" style={{
-              fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(1.6rem, 5.5vw, 3.6rem)',
-              fontWeight: '800',
-              lineHeight: 1.18,
-              marginBottom: '0.85rem',
-              color: '#ffffff',
-              letterSpacing: '-0.5px',
-              wordBreak: 'break-word'
-            }}>
-              Unveil Your Natural <br />
-              <span className="gold-shimmer-text" style={{ fontStyle: 'italic', fontWeight: '800' }}>
-                Radiant Glass Skin
+            {/* Main Headline */}
+            <h1
+              className="hero-headline"
+              style={{
+                fontSize: 'clamp(1.8rem, 4.5vw, 3.2rem)',
+                fontWeight: '900',
+                lineHeight: 1.15,
+                color: '#ffffff',
+                marginBottom: '1rem',
+                letterSpacing: '-0.03em'
+              }}
+            >
+              Clinical Radiance. <br />
+              <span style={{ color: '#c5a059' }}>
+                Dermatological Skincare.
               </span>
             </h1>
 
-            {/* Subtext */}
-            <p className="hero-subtext" style={{
-              fontSize: 'clamp(0.85rem, 3.2vw, 1.05rem)',
-              color: '#ebd390',
-              lineHeight: 1.6,
-              marginBottom: '1.5rem',
-              maxWidth: '540px',
-              opacity: 0.95,
-              wordBreak: 'break-word'
-            }}>
-              Formulated with medical-grade <strong>Pure L-Glutathione, Niacinamide 5% & Vitamin C</strong>. Diminish dark spots & hyperpigmentation safely.
+            {/* Value Subtitle */}
+            <p
+              style={{
+                fontSize: 'clamp(0.92rem, 2vw, 1.05rem)',
+                color: '#e4d3db',
+                lineHeight: 1.6,
+                marginBottom: '1.8rem',
+                maxWidth: '520px'
+              }}
+            >
+              Enriched with medical-grade <strong>Pure L-Glutathione, 5% Niacinamide & Vitamin C</strong>. Engineered specifically to tackle hyperpigmentation, sun damage, and uneven tone in Pakistani climate.
             </p>
 
-            {/* Buttons Container */}
-            <div className="hero-action-buttons" style={{
-              display: 'flex',
-              gap: '10px',
-              flexWrap: 'wrap',
-              alignItems: 'center',
-              marginBottom: '1.8rem',
-              width: '100%'
-            }}>
+            {/* Direct CTAs */}
+            <div
+              style={{
+                display: 'flex',
+                gap: '12px',
+                flexWrap: 'wrap',
+                alignItems: 'center',
+                marginBottom: '2rem'
+              }}
+            >
               <button
                 onClick={onShopClick}
-                className="btn-gold-foil"
+                className="btn-gold-action"
                 style={{
-                  padding: '12px 24px',
+                  padding: '13px 26px',
                   borderRadius: '9999px',
-                  fontSize: '0.92rem',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '6px',
-                  boxSizing: 'border-box'
+                  fontSize: '0.94rem'
                 }}
               >
-                Shop Collection <ArrowRight size={16} />
+                Shop Collection <ArrowRight size={17} />
               </button>
 
               <button
                 onClick={onQuickBuyKit}
-                className="btn-royal-maroon"
+                className="btn-primary-action"
                 style={{
-                  padding: '12px 20px',
+                  padding: '13px 22px',
                   borderRadius: '9999px',
-                  fontSize: '0.88rem',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '6px',
-                  boxSizing: 'border-box'
+                  fontSize: '0.92rem'
                 }}
               >
-                <Sparkles size={15} color="#d4af37" /> Buy Kit (Save 25%)
+                Buy Complete Radiance Kit
               </button>
             </div>
 
-            {/* Trust Bullets Grid */}
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(110px, 1fr))',
-              gap: '8px',
-              borderTop: '1px solid rgba(212, 175, 55, 0.2)',
-              paddingTop: '1rem'
-            }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '0.75rem', color: '#ffffff', fontWeight: '700' }}>
-                <CheckCircle2 size={13} color="#d4af37" style={{ flexShrink: 0 }} /> Free Delivery
+            {/* Genuine Trust Strip */}
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
+                gap: '10px',
+                borderTop: '1px solid rgba(197, 160, 89, 0.2)',
+                paddingTop: '1.2rem'
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.78rem', color: '#ffffff', fontWeight: '600' }}>
+                <CheckCircle2 size={15} color="#c5a059" style={{ flexShrink: 0 }} /> Free Delivery
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '0.75rem', color: '#ffffff', fontWeight: '700' }}>
-                <CheckCircle2 size={13} color="#d4af37" style={{ flexShrink: 0 }} /> COD / EasyPaisa
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.78rem', color: '#ffffff', fontWeight: '600' }}>
+                <CheckCircle2 size={15} color="#c5a059" style={{ flexShrink: 0 }} /> Cash on Delivery
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '0.75rem', color: '#ffffff', fontWeight: '700' }}>
-                <CheckCircle2 size={13} color="#d4af37" style={{ flexShrink: 0 }} /> 100% Organic
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.78rem', color: '#ffffff', fontWeight: '600' }}>
+                <ShieldCheck size={15} color="#c5a059" style={{ flexShrink: 0 }} /> Steroid-Free Formula
               </div>
             </div>
-
           </div>
 
           {/* Right Column Showcase Slider */}
-          <div style={{ position: 'relative', maxWidth: '100%', overflow: 'hidden' }}>
-            <div style={{
-              position: 'relative',
-              borderRadius: '20px',
-              padding: '6px',
-              background: 'linear-gradient(135deg, rgba(212, 175, 55, 0.6) 0%, rgba(86, 0, 29, 0.4) 100%)',
-              boxShadow: '0 15px 40px rgba(0, 0, 0, 0.4)'
-            }}>
-              <div style={{
+          <div style={{ position: 'relative' }}>
+            <div
+              style={{
                 position: 'relative',
-                borderRadius: '16px',
-                overflow: 'hidden',
-                backgroundColor: '#140006'
-              }}>
+                borderRadius: '18px',
+                padding: '4px',
+                backgroundColor: 'rgba(255, 255, 255, 0.06)',
+                border: '1px solid rgba(197, 160, 89, 0.3)',
+                boxShadow: '0 16px 40px rgba(0, 0, 0, 0.35)'
+              }}
+            >
+              <div
+                style={{
+                  position: 'relative',
+                  borderRadius: '14px',
+                  overflow: 'hidden',
+                  backgroundColor: '#180007'
+                }}
+              >
                 <img
                   src={slides[currentSlide].img}
                   alt={slides[currentSlide].title}
-                  className="responsive-hero-img"
                   onError={(e) => {
                     e.target.onerror = null;
                     e.target.src = 'assets/images/day-cream.jpg';
                   }}
                   style={{
                     width: '100%',
-                    height: '260px',
+                    height: '320px',
                     objectFit: 'cover',
                     display: 'block'
                   }}
                 />
 
-                {/* Badge */}
-                <div style={{
-                  position: 'absolute',
-                  top: '10px',
-                  left: '10px',
-                  background: 'rgba(20, 0, 6, 0.9)',
-                  border: '1px solid rgba(212, 175, 55, 0.4)',
-                  padding: '4px 10px',
-                  borderRadius: '9999px',
-                  color: '#d4af37',
-                  fontSize: '0.68rem',
-                  fontWeight: '800'
-                }}>
-                  ✨ {slides[currentSlide].badge}
+                {/* Badge Overlay */}
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: '12px',
+                    left: '12px',
+                    backgroundColor: 'rgba(24, 0, 7, 0.85)',
+                    border: '1px solid rgba(197, 160, 89, 0.4)',
+                    padding: '4px 12px',
+                    borderRadius: '9999px',
+                    color: '#c5a059',
+                    fontSize: '0.72rem',
+                    fontWeight: '800'
+                  }}
+                >
+                  {slides[currentSlide].badge}
                 </div>
 
                 {/* Bottom Title Bar */}
-                <div style={{
-                  position: 'absolute',
-                  bottom: '0',
-                  insetX: '0',
-                  background: 'linear-gradient(to top, rgba(20, 0, 6, 0.95) 0%, transparent 100%)',
-                  padding: '12px',
-                  color: '#ffffff'
-                }}>
-                  <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.05rem', fontWeight: '800', color: '#ffffff', marginBottom: '2px' }}>
+                <div
+                  style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    insetX: 0,
+                    background: 'linear-gradient(to top, rgba(24, 0, 7, 0.95) 0%, rgba(24, 0, 7, 0.6) 60%, transparent 100%)',
+                    padding: '16px',
+                    color: '#ffffff'
+                  }}
+                >
+                  <h3 style={{ fontSize: '1.12rem', fontWeight: '800', color: '#ffffff', marginBottom: '2px' }}>
                     {slides[currentSlide].title}
                   </h3>
-                  <p style={{ fontSize: '0.75rem', color: '#ebd390' }}>
+                  <p style={{ fontSize: '0.78rem', color: '#d8c2cb' }}>
                     {slides[currentSlide].subtitle}
                   </p>
                 </div>
 
-                {/* Slider Arrows */}
+                {/* Slider Navigation Arrows */}
                 <button
                   onClick={() => setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1))}
                   style={{
                     position: 'absolute',
                     top: '50%',
-                    left: '6px',
+                    left: '8px',
                     transform: 'translateY(-50%)',
                     width: '32px',
                     height: '32px',
                     borderRadius: '50%',
-                    background: 'rgba(20, 0, 6, 0.7)',
-                    border: '1px solid rgba(212, 175, 55, 0.4)',
-                    color: '#d4af37',
+                    backgroundColor: 'rgba(24, 0, 7, 0.75)',
+                    border: '1px solid rgba(197, 160, 89, 0.35)',
+                    color: '#c5a059',
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'center'
+                    justifyContent: 'center',
+                    cursor: 'pointer'
                   }}
+                  aria-label="Previous Slide"
                 >
                   <ChevronLeft size={18} />
                 </button>
@@ -255,26 +263,26 @@ export default function HeroSection({ onShopClick, onQuickBuyKit }) {
                   style={{
                     position: 'absolute',
                     top: '50%',
-                    right: '6px',
+                    right: '8px',
                     transform: 'translateY(-50%)',
                     width: '32px',
                     height: '32px',
                     borderRadius: '50%',
-                    background: 'rgba(20, 0, 6, 0.7)',
-                    border: '1px solid rgba(212, 175, 55, 0.4)',
-                    color: '#d4af37',
+                    backgroundColor: 'rgba(24, 0, 7, 0.75)',
+                    border: '1px solid rgba(197, 160, 89, 0.35)',
+                    color: '#c5a059',
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'center'
+                    justifyContent: 'center',
+                    cursor: 'pointer'
                   }}
+                  aria-label="Next Slide"
                 >
                   <ChevronRight size={18} />
                 </button>
-
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>
