@@ -1,0 +1,2250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Gulta White™ | Luxury Skincare Collection - Naturally Brighter, Healthier You</title>
+  <meta name="description" content="Discover Gulta White™ Luxury Skincare Collection. Premium Face Cream, Glow Serum & Acne Treatment for radiant, smooth, confident skin. Free Delivery & Cash on Delivery across Pakistan.">
+  
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* =============================================================
+       1. LUXURY DESIGN SYSTEM & TOKENS (Burgundy + Champagne Gold)
+       ============================================================= */
+    :root {
+      /* Royal Velvet Burgundy Palette */
+      --burgundy-950: #1b0307;
+      --burgundy-900: #2d050d;
+      --burgundy-850: #420a14;
+      --burgundy-800: #5a1020; /* Brand Signature Burgundy */
+      --burgundy-700: #73172b;
+      --burgundy-600: #8e1f37;
+      --burgundy-100: #faeaed;
+      --burgundy-50:  #fff5f7;
+
+      /* Royal Champagne Gold Palette */
+      --gold-700: #8c6a21;
+      --gold-600: #a9812b;
+      --gold-500: #c59b39;
+      --gold-400: #d9b56d; /* Brand Signature Gold */
+      --gold-300: #ebd39b;
+      --gold-200: #f5e4bd;
+      --gold-100: #fbf5e6;
+      --gold-50:  #fdfcf7;
+
+      /* Silk Pearl & Rose Bases */
+      --pearl-bg: #fffaf9;
+      --pearl-card: #ffffff;
+      --pearl-warm: #fcf3f1;
+      --rose-tint: #fbebee;
+
+      /* Text Gradients & Colors */
+      --text-dark: #24070c;
+      --text-body: #573e44;
+      --text-muted: #836d73;
+      --text-light: #ffffff;
+
+      /* Typography */
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+
+      /* Radii */
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
+      --radius-xl: 32px;
+      --radius-full: 9999px;
+
+      /* Shadows */
+      --shadow-sm: 0 4px 14px rgba(90, 16, 32, 0.05);
+      --shadow-md: 0 10px 30px rgba(90, 16, 32, 0.09);
+      --shadow-lg: 0 20px 50px rgba(90, 16, 32, 0.15);
+      --shadow-gold: 0 10px 30px rgba(217, 181, 109, 0.3);
+      --shadow-burgundy: 0 16px 40px rgba(58, 6, 17, 0.38);
+
+      /* Transitions */
+      --trans-fast: 0.2s ease;
+      --trans-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Base Reset */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      background-color: var(--pearl-bg);
+      color: var(--text-body);
+      font-family: var(--font-sans);
+      line-height: 1.65;
+      overflow-x: hidden;
+      width: 100%;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; transition: var(--trans-fast); }
+    img { max-width: 100%; height: auto; display: block; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 clamp(16px, 4vw, 32px);
+    }
+
+    /* Shimmer Gold Text Utility */
+    .gold-shimmer {
+      background: linear-gradient(135deg, #f7e6be 0%, var(--gold-400) 45%, #b48a33 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    /* =============================================================
+       2. TOP ANNOUNCEMENT BAR
+       ============================================================= */
+    .topbar {
+      background: linear-gradient(90deg, var(--burgundy-950), #33050d, var(--burgundy-950));
+      color: var(--gold-300);
+      font-size: clamp(0.72rem, 1.8vw, 0.82rem);
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(217, 181, 109, 0.22);
+      position: relative;
+      z-index: 1001;
+    }
+
+    .topbar-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .topbar-perks {
+      display: flex;
+      align-items: center;
+      gap: clamp(10px, 2vw, 24px);
+    }
+
+    .topbar-perk {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+    }
+
+    .topbar-perk i { color: var(--gold-400); font-size: 0.85rem; }
+
+    .topbar-helpline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      background: rgba(217, 181, 109, 0.12);
+      border: 1px solid rgba(217, 181, 109, 0.35);
+      padding: 3px 12px;
+      border-radius: var(--radius-full);
+      color: #ffffff;
+      transition: var(--trans-fast);
+      white-space: nowrap;
+    }
+
+    .topbar-helpline:hover {
+      background: var(--gold-400);
+      color: var(--burgundy-950);
+    }
+
+    .topbar-helpline i { color: #25d366; font-size: 0.95rem; }
+    .topbar-helpline:hover i { color: var(--burgundy-950); }
+
+    /* =============================================================
+       3. LUXURY STICKY HEADER & RESPONSIVE NAV
+       ============================================================= */
+    header {
+      background: rgba(90, 16, 32, 0.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 8px 30px rgba(40, 5, 12, 0.3);
+      border-bottom: 1px solid rgba(217, 181, 109, 0.28);
+      width: 100%;
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+    }
+
+    /* Brand Logo */
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-crest {
+      width: clamp(38px, 5vw, 46px);
+      height: clamp(38px, 5vw, 46px);
+      border-radius: var(--radius-full);
+      background: linear-gradient(135deg, var(--gold-400), var(--gold-600));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--burgundy-950);
+      font-size: 1.15rem;
+      border: 1.5px solid #ffffff;
+      box-shadow: 0 4px 15px rgba(217, 181, 109, 0.4);
+      flex-shrink: 0;
+    }
+
+    .logo-text-wrap {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-main {
+      font-family: var(--font-serif);
+      font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+      font-weight: 800;
+      line-height: 1;
+      color: var(--gold-400);
+      letter-spacing: 0.3px;
+    }
+
+    .logo-main span {
+      color: #ffffff;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .logo-sub {
+      font-size: 0.62rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.78);
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    /* Desktop Navigation */
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: clamp(16px, 2.5vw, 32px);
+      list-style: none;
+    }
+
+    .nav-link {
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 0.92rem;
+      font-weight: 600;
+      padding: 6px 0;
+      letter-spacing: 0.3px;
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold-400), var(--gold-300));
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--gold-400);
+    }
+
+    .nav-link:hover::after, .nav-link.active::after {
+      width: 100%;
+    }
+
+    /* Header Actions */
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-header-wa {
+      background: linear-gradient(135deg, var(--gold-400), var(--gold-500));
+      color: var(--burgundy-950);
+      font-weight: 800;
+      font-size: 0.86rem;
+      padding: 9px 20px;
+      border-radius: var(--radius-full);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: var(--shadow-gold);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      white-space: nowrap;
+      transition: var(--trans-smooth);
+    }
+
+    .btn-header-wa:hover {
+      background: #ffffff;
+      color: var(--burgundy-800);
+      transform: translateY(-2px);
+    }
+
+    /* Mobile Hamburger Button */
+    .hamburger-btn {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(217, 181, 109, 0.3);
+      color: var(--gold-400);
+      font-size: 1.25rem;
+      align-items: center;
+      justify-content: center;
+      transition: var(--trans-fast);
+    }
+
+    .hamburger-btn:hover {
+      background: var(--gold-400);
+      color: var(--burgundy-950);
+    }
+
+    /* Mobile Drawer Menu */
+    .mobile-drawer {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: min(85vw, 360px);
+      height: 100vh;
+      background: linear-gradient(180deg, var(--burgundy-950) 0%, var(--burgundy-900) 100%);
+      z-index: 2000;
+      padding: 30px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-left: 2px solid var(--gold-400);
+      box-shadow: -15px 0 40px rgba(0,0,0,0.6);
+      transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .mobile-drawer.active {
+      right: 0;
+    }
+
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+      z-index: 1999;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.35s ease;
+    }
+
+    .drawer-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .drawer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(217, 181, 109, 0.2);
+    }
+
+    .drawer-close {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(217, 181, 109, 0.3);
+    }
+
+    .drawer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-top: 30px;
+    }
+
+    .drawer-links a {
+      color: #ffffff;
+      font-size: 1.15rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .drawer-links a:hover {
+      color: var(--gold-400);
+    }
+
+    .drawer-bottom {
+      padding-top: 20px;
+      border-top: 1px solid rgba(217, 181, 109, 0.2);
+    }
+
+    /* =============================================================
+       4. HERO BANNER SECTION (FLUID RESPONSIVE + LUXURY 3D)
+       ============================================================= */
+    .hero {
+      position: relative;
+      background: radial-gradient(circle at 80% 25%, rgba(217, 181, 109, 0.22) 0%, transparent 55%),
+                  radial-gradient(circle at 10% 80%, rgba(90, 16, 32, 0.08) 0%, transparent 45%),
+                  linear-gradient(135deg, #fffcfb 0%, #fbf1ee 50%, #f6e1e1 100%);
+      padding: clamp(40px, 8vw, 85px) 0 clamp(50px, 9vw, 95px);
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      gap: clamp(30px, 5vw, 60px);
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(90, 16, 32, 0.07);
+      border: 1px solid rgba(90, 16, 32, 0.16);
+      color: var(--burgundy-800);
+      padding: 6px clamp(12px, 3vw, 18px);
+      border-radius: var(--radius-full);
+      font-size: clamp(0.74rem, 1.8vw, 0.84rem);
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      margin-bottom: 18px;
+    }
+
+    .hero-badge i { color: var(--gold-500); }
+
+    .hero-text h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 5.5vw, 4rem);
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--burgundy-800);
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero-text h1 span {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 600;
+      color: var(--gold-600);
+    }
+
+    .hero-text h2 {
+      font-family: var(--font-serif);
+      color: var(--gold-600);
+      font-size: clamp(1.2rem, 2.5vw, 1.65rem);
+      font-weight: 700;
+      margin-bottom: 18px;
+      letter-spacing: 0.2px;
+    }
+
+    .hero-text p {
+      font-size: clamp(0.96rem, 2vw, 1.12rem);
+      line-height: 1.75;
+      color: var(--text-body);
+      max-width: 530px;
+      margin-bottom: 30px;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 35px;
+    }
+
+    .btn-primary-luxe {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: clamp(13px, 2.5vw, 16px) clamp(24px, 4vw, 36px);
+      background: linear-gradient(135deg, var(--burgundy-800), var(--burgundy-900));
+      color: #ffffff;
+      font-weight: 700;
+      font-size: clamp(0.9rem, 2vw, 1rem);
+      border-radius: var(--radius-full);
+      box-shadow: var(--shadow-burgundy);
+      border: 1px solid rgba(217, 181, 109, 0.45);
+      transition: var(--trans-smooth);
+    }
+
+    .btn-primary-luxe:hover {
+      background: linear-gradient(135deg, var(--burgundy-700), var(--burgundy-800));
+      transform: translateY(-3px);
+      box-shadow: 0 20px 45px rgba(90, 16, 32, 0.45);
+      color: var(--gold-200);
+    }
+
+    .btn-wa-luxe {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: clamp(13px, 2.5vw, 16px) clamp(22px, 3.5vw, 32px);
+      background: #25d366;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: clamp(0.9rem, 2vw, 1rem);
+      border-radius: var(--radius-full);
+      box-shadow: 0 10px 25px rgba(37, 211, 102, 0.35);
+      transition: var(--trans-smooth);
+    }
+
+    .btn-wa-luxe:hover {
+      background: #1eb855;
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(37, 211, 102, 0.45);
+    }
+
+    .hero-trust-metrics {
+      display: flex;
+      align-items: center;
+      gap: clamp(16px, 3.5vw, 30px);
+      padding-top: 20px;
+      border-top: 1px solid rgba(90, 16, 32, 0.12);
+      flex-wrap: wrap;
+    }
+
+    .metric-item { display: flex; flex-direction: column; }
+    .metric-val { font-family: var(--font-serif); font-size: clamp(1.25rem, 2.5vw, 1.55rem); font-weight: 800; color: var(--burgundy-800); }
+    .metric-lbl { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; }
+    .metric-sep { width: 1px; height: 32px; background: rgba(90, 16, 32, 0.15); }
+
+    /* Hero Showcase Card (Self-Centering & Fluid) */
+    .hero-stage {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+
+    .hero-luxe-card {
+      width: 100%;
+      max-width: 390px;
+      background: linear-gradient(155deg, #641525 0%, #420a15 60%, #26030a 100%);
+      border-radius: var(--radius-xl);
+      padding: clamp(28px, 5vw, 40px) clamp(20px, 4vw, 28px);
+      text-align: center;
+      box-shadow: 0 25px 60px rgba(60, 0, 20, 0.4),
+                  0 0 0 1.5px rgba(217, 181, 109, 0.35) inset;
+      position: relative;
+      transition: transform 0.4s ease;
+    }
+
+    .hero-luxe-card:hover { transform: translateY(-6px); }
+
+    /* Responsive 3D Luxury Jar Component */
+    .jar-3d-box {
+      width: min(100%, 200px);
+      margin: 0 auto 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .jar-gold-lid {
+      width: 85%;
+      height: 34px;
+      background: linear-gradient(90deg, #b88a38, #f5e4ab, #e1bc6e, #a87928);
+      border-radius: 10px 10px 3px 3px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), inset 0 2px 2px rgba(255, 255, 255, 0.6);
+      position: relative;
+      z-index: 3;
+    }
+
+    .jar-frosted-body {
+      width: 100%;
+      height: 120px;
+      background: linear-gradient(135deg, #ffffff 0%, #f6f0ed 60%, #dfcfc7 100%);
+      border-radius: 4px 4px 32px 32px;
+      border: 3.5px solid var(--gold-400);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      position: relative;
+      z-index: 2;
+      margin-top: -1px;
+    }
+
+    .jar-frosted-body .jar-logo-tag {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--burgundy-800);
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+
+    .jar-frosted-body .jar-sub-tag {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--gold-600);
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    .jar-frosted-body .jar-net-tag {
+      margin-top: 6px;
+      font-size: 0.68rem;
+      background: var(--burgundy-800);
+      color: #ffffff;
+      padding: 2px 10px;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+    }
+
+    .hero-luxe-card h3 {
+      font-family: var(--font-serif);
+      color: var(--gold-400);
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .hero-luxe-card .product-tagline {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.92rem;
+      margin-bottom: 18px;
+    }
+
+    .hero-card-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(0, 0, 0, 0.28);
+      padding: 12px 18px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(217, 181, 109, 0.25);
+    }
+
+    .price-group { text-align: left; }
+    .price-group-lbl { font-size: 0.68rem; color: #ccc; text-transform: uppercase; letter-spacing: 0.5px; }
+    .price-group-num { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 800; color: var(--gold-300); }
+
+    .btn-card-quick {
+      background: linear-gradient(135deg, var(--gold-400), var(--gold-500));
+      color: var(--burgundy-950);
+      padding: 8px 16px;
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Floating Badges (Fluid Responsive) */
+    .hero-float-pill {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(8px);
+      padding: 8px 14px;
+      border-radius: var(--radius-full);
+      box-shadow: 0 10px 25px rgba(90, 16, 32, 0.14);
+      border: 1px solid rgba(217, 181, 109, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 4;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--burgundy-800);
+      white-space: nowrap;
+    }
+
+    .hero-float-pill i { color: var(--gold-500); }
+    .hero-float-pill.top-badge { top: -12px; left: -15px; }
+    .hero-float-pill.bottom-badge { bottom: 15px; right: -15px; }
+
+    /* =============================================================
+       5. WHIZ-LABORATORIES STYLE "SHOP BY SKIN CONCERN" BAR
+       ============================================================= */
+    .concerns-section {
+      background: #ffffff;
+      border-top: 1px solid rgba(217, 181, 109, 0.25);
+      border-bottom: 1px solid rgba(217, 181, 109, 0.25);
+      padding: 16px 0;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    }
+
+    .concerns-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .concerns-inner::-webkit-scrollbar { height: 3px; }
+    .concerns-inner::-webkit-scrollbar-thumb { background: var(--gold-400); border-radius: 2px; }
+
+    .concern-lead {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.84rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--burgundy-800);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .concern-lead i { color: var(--gold-500); }
+
+    .concern-pills-wrap {
+      display: flex;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .concern-btn {
+      background: var(--pearl-warm);
+      border: 1px solid rgba(90, 16, 32, 0.14);
+      padding: 6px 16px;
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      white-space: nowrap;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .concern-btn:hover, .concern-btn.active {
+      background: var(--burgundy-800);
+      color: #ffffff;
+      border-color: var(--burgundy-800);
+    }
+
+    /* =============================================================
+       6. PRODUCTS SECTION (3 CORE CLIENT PRODUCTS + BUNDLES)
+       ============================================================= */
+    .products-sec {
+      padding: clamp(60px, 8vw, 95px) 0;
+      background: var(--pearl-bg);
+    }
+
+    .section-title-wrap {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto clamp(35px, 6vw, 55px);
+    }
+
+    .section-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gold-600);
+      margin-bottom: 8px;
+    }
+
+    .section-eyebrow::before, .section-eyebrow::after {
+      content: '';
+      width: 25px;
+      height: 1px;
+      background: var(--gold-400);
+    }
+
+    .section-title-wrap h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 800;
+      color: var(--burgundy-800);
+      letter-spacing: -0.3px;
+    }
+
+    .section-title-wrap p {
+      font-size: clamp(0.92rem, 1.8vw, 1.05rem);
+      color: var(--text-muted);
+      margin-top: 10px;
+    }
+
+    /* Fluid Products Grid */
+    .products-grid-luxe {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(20px, 3.5vw, 36px);
+    }
+
+    .card-luxe {
+      background: var(--pearl-card);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(90, 16, 32, 0.07);
+      border: 1px solid rgba(217, 181, 109, 0.25);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .card-luxe:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 45px rgba(90, 16, 32, 0.15);
+      border-color: var(--gold-400);
+    }
+
+    .card-badge-pill {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: var(--burgundy-800);
+      color: var(--gold-300);
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      z-index: 10;
+    }
+
+    .card-badge-pill.gold {
+      background: linear-gradient(135deg, var(--gold-400), var(--gold-600));
+      color: var(--burgundy-950);
+    }
+
+    /* Product Visual Stage */
+    .card-img-box {
+      height: clamp(230px, 28vw, 280px);
+      background: radial-gradient(circle at center, #ffffff 0%, #fbeeed 80%, #f5dede 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 20px;
+    }
+
+    /* 3D Bottle Visual for Serums */
+    .serum-bottle-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.35s ease;
+    }
+
+    .card-luxe:hover .serum-bottle-box,
+    .card-luxe:hover .card-jar-box {
+      transform: scale(1.06);
+    }
+
+    .pipette-cap {
+      width: 28px;
+      height: 24px;
+      background: #ffffff;
+      border-radius: 12px 12px 2px 2px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+    }
+
+    .pipette-ring {
+      width: 42px;
+      height: 16px;
+      background: linear-gradient(90deg, #b88a38, #f5e4ab, #d9b56d, #9e7a2b);
+      border-radius: 3px;
+      margin-top: -2px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+
+    .pipette-bottle {
+      width: 78px;
+      height: 135px;
+      border-radius: 10px 10px 24px 24px;
+      background: linear-gradient(135deg, #74182b 0%, #5a1020 50%, #30060e 100%);
+      border: 3px solid var(--gold-400);
+      box-shadow: 0 12px 25px rgba(90, 16, 32, 0.35);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 4px;
+      margin-top: -2px;
+    }
+
+    .pipette-bottle.acne-mode {
+      background: linear-gradient(135deg, #3d141d 0%, #290c13 60%, #160408 100%);
+      border-color: #e5c378;
+    }
+
+    .bottle-inner-label {
+      width: 62px;
+      background: #ffffff;
+      border-radius: 3px;
+      padding: 6px 3px;
+      text-align: center;
+      border: 1px solid var(--gold-400);
+    }
+
+    .lbl-title {
+      font-size: 0.54rem;
+      font-weight: 800;
+      color: var(--burgundy-800);
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+
+    .lbl-sub {
+      font-size: 0.48rem;
+      font-weight: 700;
+      color: var(--gold-600);
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    /* Card Jar Box for Cream */
+    .card-jar-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.35s ease;
+    }
+
+    .card-jar-lid-sm {
+      width: 125px;
+      height: 28px;
+      background: linear-gradient(90deg, #b88a38, #f5e4ab, #e1bc6e, #a87928);
+      border-radius: 8px 8px 2px 2px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    }
+
+    .card-jar-body-sm {
+      width: 145px;
+      height: 100px;
+      background: linear-gradient(135deg, #ffffff 0%, #f6f0ed 60%, #e2d2cb 100%);
+      border-radius: 3px 3px 26px 26px;
+      border: 3px solid var(--gold-400);
+      box-shadow: 0 10px 25px rgba(90, 16, 32, 0.25);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      margin-top: -1px;
+    }
+
+    .card-content-luxe {
+      padding: clamp(18px, 3vw, 26px);
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      text-align: center;
+    }
+
+    .card-rating-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      color: var(--gold-500);
+      font-size: 0.8rem;
+      margin-bottom: 8px;
+    }
+
+    .card-rating-row span {
+      color: var(--text-muted);
+      font-size: 0.76rem;
+      margin-left: 4px;
+    }
+
+    .card-content-luxe h3 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.25rem, 2vw, 1.45rem);
+      font-weight: 700;
+      color: var(--burgundy-800);
+      margin-bottom: 6px;
+    }
+
+    .card-content-luxe p {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      line-height: 1.55;
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+
+    .tags-cloud {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .tag-bubble {
+      font-size: 0.7rem;
+      background: var(--rose-tint);
+      color: var(--burgundy-800);
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+    }
+
+    .card-pricing-block {
+      margin-bottom: 18px;
+      padding-top: 12px;
+      border-top: 1px dashed rgba(90, 16, 32, 0.15);
+    }
+
+    .price-old {
+      font-size: 0.9rem;
+      text-decoration: line-through;
+      color: #999;
+      margin-right: 8px;
+    }
+
+    .price-main {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--gold-600);
+    }
+
+    .btn-card-order-luxe {
+      width: 100%;
+      padding: 13px 20px;
+      background: linear-gradient(135deg, var(--burgundy-800), var(--burgundy-900));
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.92rem;
+      border-radius: var(--radius-full);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 6px 18px rgba(90, 16, 32, 0.2);
+      border: 1px solid rgba(217, 181, 109, 0.35);
+      transition: var(--trans-fast);
+    }
+
+    .btn-card-order-luxe:hover {
+      background: #25d366;
+      border-color: #25d366;
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+    }
+
+    /* =============================================================
+       7. FEATURES (WHY GULTA CARE?)
+       ============================================================= */
+    .features-sec {
+      padding: clamp(50px, 8vw, 90px) 0;
+      background: linear-gradient(180deg, var(--pearl-bg) 0%, #fbf1ef 100%);
+    }
+
+    .features-grid-luxe {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: clamp(16px, 2.5vw, 28px);
+    }
+
+    .feature-card-luxe {
+      background: #ffffff;
+      padding: clamp(24px, 4vw, 36px) clamp(18px, 3vw, 24px);
+      border-radius: var(--radius-md);
+      box-shadow: 0 8px 25px rgba(90, 16, 32, 0.05);
+      border: 1px solid rgba(217, 181, 109, 0.22);
+      text-align: center;
+      transition: var(--trans-smooth);
+      position: relative;
+    }
+
+    .feature-card-luxe:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(90, 16, 32, 0.1);
+      border-color: var(--gold-400);
+    }
+
+    .feat-icon-emblem {
+      width: clamp(56px, 7vw, 68px);
+      height: clamp(56px, 7vw, 68px);
+      margin: 0 auto 18px;
+      border-radius: var(--radius-full);
+      background: linear-gradient(135deg, var(--burgundy-50), var(--rose-tint));
+      border: 1.5px solid rgba(217, 181, 109, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--burgundy-800);
+      font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+      transition: var(--trans-smooth);
+    }
+
+    .feature-card-luxe:hover .feat-icon-emblem {
+      background: linear-gradient(135deg, var(--burgundy-800), var(--burgundy-900));
+      color: var(--gold-400);
+      transform: scale(1.06);
+    }
+
+    .feature-card-luxe h3 {
+      font-family: var(--font-serif);
+      color: var(--burgundy-800);
+      font-size: clamp(1.15rem, 2vw, 1.35rem);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .feature-card-luxe p {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+
+    /* =============================================================
+       8. ABOUT GULTA CARE (EDITORIAL LUXURY)
+       ============================================================= */
+    .about-sec {
+      background: linear-gradient(135deg, #5a1020 0%, #440c17 50%, #28040b 100%);
+      color: #ffffff;
+      padding: clamp(60px, 8vw, 100px) 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-grid-luxe {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: clamp(35px, 6vw, 70px);
+    }
+
+    .about-photo-frame {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+      border: 3px solid rgba(217, 181, 109, 0.4);
+      position: relative;
+    }
+
+    .about-photo-frame img {
+      width: 100%;
+      height: clamp(320px, 45vw, 440px);
+      object-fit: cover;
+    }
+
+    .about-text-content h2 {
+      font-family: var(--font-serif);
+      color: var(--gold-400);
+      font-size: clamp(2.2rem, 4.5vw, 2.85rem);
+      font-weight: 700;
+      margin-bottom: 18px;
+      line-height: 1.15;
+    }
+
+    .about-lead {
+      font-size: clamp(1.05rem, 2vw, 1.2rem);
+      color: #ffffff;
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+
+    .about-text-content p {
+      color: rgba(255, 255, 255, 0.82);
+      line-height: 1.75;
+      font-size: 0.98rem;
+      margin-bottom: 25px;
+    }
+
+    .about-badges-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 30px;
+    }
+
+    .about-badge-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: #ffffff;
+    }
+
+    .about-badge-item i { color: var(--gold-400); font-size: 1.05rem; }
+
+    /* =============================================================
+       9. CUSTOMER REVIEWS (VERIFIED PROOF)
+       ============================================================= */
+    .reviews-sec {
+      padding: clamp(60px, 8vw, 95px) 0;
+      background: var(--pearl-bg);
+    }
+
+    .reviews-grid-luxe {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(18px, 3vw, 30px);
+    }
+
+    .review-box {
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      padding: clamp(22px, 3vw, 30px);
+      box-shadow: 0 8px 25px rgba(90, 16, 32, 0.05);
+      border: 1px solid rgba(217, 181, 109, 0.22);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .review-stars-wrap { color: var(--gold-500); font-size: 0.88rem; margin-bottom: 12px; }
+
+    .review-body-text {
+      font-style: italic;
+      color: var(--text-body);
+      font-size: 0.92rem;
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+
+    .reviewer-meta-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-top: 1px solid rgba(90, 16, 32, 0.08);
+      padding-top: 14px;
+    }
+
+    .reviewer-initial {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--burgundy-800), var(--burgundy-950));
+      color: var(--gold-300);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .reviewer-details h4 { font-size: 0.92rem; font-weight: 700; color: var(--burgundy-800); }
+    .reviewer-details span { font-size: 0.75rem; color: var(--text-muted); }
+
+    /* =============================================================
+       10. CONTACT & ORDER FORM
+       ============================================================= */
+    .contact-sec {
+      padding: clamp(60px, 8vw, 95px) 0;
+      background: linear-gradient(180deg, var(--pearl-bg) 0%, #f8e7e7 100%);
+    }
+
+    .contact-card-wrap {
+      max-width: 780px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: clamp(26px, 5vw, 50px);
+      box-shadow: 0 15px 45px rgba(90, 16, 32, 0.08);
+      border: 1px solid rgba(217, 181, 109, 0.3);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .form-group-luxe.col-full { grid-column: span 2; }
+
+    .form-group-luxe label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--burgundy-800);
+      margin-bottom: 6px;
+    }
+
+    .form-control-luxe {
+      width: 100%;
+      padding: 13px 16px;
+      border: 1.5px solid rgba(90, 16, 32, 0.16);
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      font-size: 0.92rem;
+      background: #fffdfd;
+      color: var(--text-dark);
+      outline: none;
+      transition: var(--trans-fast);
+    }
+
+    .form-control-luxe:focus {
+      border-color: var(--gold-500);
+      box-shadow: 0 0 0 3px rgba(217, 181, 109, 0.16);
+    }
+
+    textarea.form-control-luxe { min-height: 110px; resize: vertical; }
+
+    .btn-submit-luxe {
+      grid-column: span 2;
+      padding: 15px 30px;
+      background: linear-gradient(135deg, var(--burgundy-800), var(--burgundy-900));
+      color: #ffffff;
+      border: 1px solid rgba(217, 181, 109, 0.4);
+      border-radius: var(--radius-full);
+      font-weight: 800;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: var(--shadow-burgundy);
+      transition: var(--trans-smooth);
+      margin-top: 8px;
+    }
+
+    .btn-submit-luxe:hover {
+      background: #25d366;
+      border-color: #25d366;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(37, 211, 102, 0.35);
+    }
+
+    /* =============================================================
+       11. LUXURY FOOTER
+       ============================================================= */
+    footer {
+      background: #300811;
+      color: #ffffff;
+      padding: clamp(50px, 7vw, 70px) 0 30px;
+      border-top: 2px solid var(--gold-500);
+    }
+
+    .footer-grid-luxe {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: clamp(24px, 4vw, 40px);
+      margin-bottom: 40px;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-serif);
+      color: var(--gold-400);
+      font-size: 1.2rem;
+      margin-bottom: 16px;
+    }
+
+    .footer-col p { color: rgba(255, 255, 255, 0.76); font-size: 0.9rem; line-height: 1.65; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col a { color: rgba(255, 255, 255, 0.76); font-size: 0.9rem; }
+    .footer-col a:hover { color: var(--gold-400); padding-left: 3px; }
+
+    .footer-bottom-luxe {
+      border-top: 1px solid rgba(217, 181, 109, 0.2);
+      padding-top: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .footer-bottom-luxe span { color: var(--gold-400); font-weight: 700; }
+
+    /* =============================================================
+       12. FLOATING WHATSAPP BUTTON (CONVERSION OPTIMIZED)
+       ============================================================= */
+    .whatsapp-floater {
+      position: fixed;
+      right: clamp(16px, 3vw, 25px);
+      bottom: clamp(16px, 3vw, 25px);
+      background: #25D366;
+      color: #ffffff;
+      width: clamp(52px, 6vw, 62px);
+      height: clamp(52px, 6vw, 62px);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(26px, 3vw, 30px);
+      box-shadow: 0 10px 30px rgba(37, 211, 102, 0.45);
+      z-index: 9999;
+      transition: all 0.3s ease;
+    }
+
+    .whatsapp-floater:hover {
+      transform: scale(1.08) rotate(6deg);
+      box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6);
+      color: #ffffff;
+    }
+
+    .wa-pulse {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: rgba(37, 211, 102, 0.5);
+      animation: pulseGlow 2s infinite;
+      z-index: -1;
+    }
+
+    @keyframes pulseGlow {
+      0% { transform: scale(1); opacity: 0.8; }
+      100% { transform: scale(1.45); opacity: 0; }
+    }
+
+    /* =============================================================
+       13. RESPONSIVE BREAKPOINTS (100% BULLETPROOF)
+       ============================================================= */
+    @media (max-width: 1024px) {
+      .products-grid-luxe { grid-template-columns: repeat(2, 1fr); }
+      .features-grid-luxe { grid-template-columns: repeat(2, 1fr); }
+      .about-grid-luxe { grid-template-columns: 1fr; gap: 40px; }
+      .footer-grid-luxe { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 860px) {
+      .nav-desktop { display: none; }
+      .hamburger-btn { display: flex; }
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 40px;
+      }
+      .hero-text p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero-cta-group { justify-content: center; }
+      .hero-trust-metrics { justify-content: center; }
+      .hero-float-pill.top-badge { left: 0; }
+      .hero-float-pill.bottom-badge { right: 0; }
+    }
+
+    @media (max-width: 640px) {
+      .topbar-perks { display: none; }
+      .topbar-content { justify-content: center; }
+      .products-grid-luxe { grid-template-columns: 1fr; }
+      .features-grid-luxe { grid-template-columns: 1fr; }
+      .reviews-grid-luxe { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .form-group-luxe.col-full, .btn-submit-luxe { grid-column: span 1; }
+      .footer-grid-luxe { grid-template-columns: 1fr; }
+      .footer-bottom-luxe { flex-direction: column; text-align: center; }
+      .about-badges-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 400px) {
+      .hero-luxe-card { padding: 22px 14px; }
+      .hero-card-bottom { flex-direction: column; gap: 10px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =============================================================
+       1. TOP ANNOUNCEMENT BAR
+       ============================================================= -->
+  <div class="topbar">
+    <div class="container topbar-content">
+      <div class="topbar-perks">
+        <span class="topbar-perk"><i class="fa-solid fa-truck-fast"></i> Free Delivery All Over Pakistan</span>
+        <span class="topbar-perk"><i class="fa-solid fa-award"></i> 100% Original Formula</span>
+        <span class="topbar-perk"><i class="fa-solid fa-hand-holding-dollar"></i> Cash On Delivery Available</span>
+      </div>
+      <a href="https://wa.me/923001234567?text=Hello%20Gulta%20Care,%20I%20have%20an%20inquiry" class="topbar-helpline" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i> Skincare Helpline: +92 300 1234567
+      </a>
+    </div>
+  </div>
+
+
+  <!-- =============================================================
+       2. LUXURY STICKY HEADER
+       ============================================================= -->
+  <header>
+    <div class="container header-inner">
+      <!-- Luxury Brand Logo -->
+      <a href="#home" class="brand-logo">
+        <div class="logo-crest">
+          <i class="fa-solid fa-gem"></i>
+        </div>
+        <div class="logo-text-wrap">
+          <div class="logo-main">Gulta <span>White</span></div>
+          <div class="logo-sub">Premium Skincare</div>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <ul class="nav-desktop">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#concerns" class="nav-link">Skin Concerns</a></li>
+        <li><a href="#products" class="nav-link">Products</a></li>
+        <li><a href="#features" class="nav-link">Why Gulta Care</a></li>
+        <li><a href="#about" class="nav-link">About Us</a></li>
+        <li><a href="#reviews" class="nav-link">Reviews</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <!-- Header Actions -->
+      <div class="header-actions">
+        <a href="#products" class="btn-header-wa">
+          <i class="fa-solid fa-bag-shopping"></i> Order Now
+        </a>
+        <button class="hamburger-btn" id="openDrawerBtn" aria-label="Open Navigation Menu">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- =============================================================
+       MOBILE DRAWER MENU (RESPONSIVE BACKDROP)
+       ============================================================= -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div>
+      <div class="drawer-top">
+        <div class="brand-logo">
+          <div class="logo-crest" style="width:36px; height:36px; font-size:1rem;">
+            <i class="fa-solid fa-gem"></i>
+          </div>
+          <div class="logo-main" style="font-size:1.4rem;">Gulta <span>White</span></div>
+        </div>
+        <button class="drawer-close" id="closeDrawerBtn" aria-label="Close Menu">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <ul class="drawer-links">
+        <li><a href="#home" class="drawer-item">Home <i class="fa-solid fa-chevron-right"></i></a></li>
+        <li><a href="#concerns" class="drawer-item">Skin Concerns <i class="fa-solid fa-chevron-right"></i></a></li>
+        <li><a href="#products" class="drawer-item">Our Products <i class="fa-solid fa-chevron-right"></i></a></li>
+        <li><a href="#features" class="drawer-item">Why Gulta Care <i class="fa-solid fa-chevron-right"></i></a></li>
+        <li><a href="#about" class="drawer-item">About Brand <i class="fa-solid fa-chevron-right"></i></a></li>
+        <li><a href="#reviews" class="drawer-item">Customer Reviews <i class="fa-solid fa-chevron-right"></i></a></li>
+        <li><a href="#contact" class="drawer-item">Contact Us <i class="fa-solid fa-chevron-right"></i></a></li>
+      </ul>
+    </div>
+
+    <div class="drawer-bottom">
+      <a href="https://wa.me/923001234567?text=Hello%20Gulta%20Care,%20I%20want%20to%20place%20an%20order" target="_blank" class="btn-wa-luxe" style="width:100%; text-align:center;">
+        <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+      </a>
+    </div>
+  </div>
+
+
+  <!-- =============================================================
+       3. HERO SECTION (EDITORIAL BEAUTY CAMPAIGN)
+       ============================================================= -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-grid">
+        
+        <!-- Hero Text Content -->
+        <div class="hero-text">
+          <div class="hero-badge">
+            <i class="fa-solid fa-certificate"></i> 100% Certified Formula • Dermatologically Safe
+          </div>
+          <h1>Gulta <span>White</span></h1>
+          <h2>Premium Skincare Collection</h2>
+          <p>
+            Discover a modern skincare collection created for a beautiful, fresh and confident look.
+            Explore <strong>Gulta White Cream</strong>, <strong>Gulta White Serum</strong> and <strong>Gulta Acne Serum</strong> designed to nourish deeply, fade pigmentation, and restore radiant skin naturally.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#products" class="btn-primary-luxe">
+              <i class="fa-solid fa-sparkles"></i> Explore Products
+            </a>
+            <a href="https://wa.me/923001234567?text=Hello%20Gulta%20Care,%20I%20want%20to%20place%20an%20order" target="_blank" class="btn-wa-luxe">
+              <i class="fa-brands fa-whatsapp"></i> Order on WhatsApp
+            </a>
+          </div>
+
+          <!-- Trust Proof Metrics -->
+          <div class="hero-trust-metrics">
+            <div class="metric-item">
+              <span class="metric-val">50,000+</span>
+              <span class="metric-lbl">Happy Pakistani Clients</span>
+            </div>
+            <div class="metric-sep"></div>
+            <div class="metric-item">
+              <span class="metric-val">4.9 ★</span>
+              <span class="metric-lbl">Verified Rating</span>
+            </div>
+            <div class="metric-sep"></div>
+            <div class="metric-item">
+              <span class="metric-val">100%</span>
+              <span class="metric-lbl">Steroid-Free Formula</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero 3D Card Showcase -->
+        <div class="hero-stage">
+          
+          <div class="hero-float-pill top-badge">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>Dermatologist Approved</span>
+          </div>
+
+          <div class="hero-float-pill bottom-badge">
+            <i class="fa-solid fa-droplet"></i>
+            <span>24H Deep Hydration</span>
+          </div>
+
+          <div class="hero-luxe-card">
+            <span style="display:inline-block; background:rgba(217,181,109,0.2); border:1px solid var(--gold-400); color:var(--gold-300); font-size:0.74rem; font-weight:800; padding:4px 14px; border-radius:999px; text-transform:uppercase; letter-spacing:1px; margin-bottom:20px;">
+              Hero Bestseller
+            </span>
+
+            <!-- 3D Luxury Cosmetic Jar -->
+            <div class="jar-3d-box">
+              <div class="jar-gold-lid"></div>
+              <div class="jar-frosted-body">
+                <span class="jar-logo-tag">Gulta<br>White</span>
+                <span class="jar-sub-tag">Skin Care</span>
+                <span class="jar-net-tag">30g Net</span>
+              </div>
+            </div>
+
+            <h3>Gulta White</h3>
+            <p class="product-tagline">Premium Face Cream</p>
+
+            <div class="hero-card-bottom">
+              <div class="price-group">
+                <div class="price-group-lbl">Special Price</div>
+                <div class="price-group-num">Rs. 1,500</div>
+              </div>
+              <a href="https://wa.me/923001234567?text=I%20want%20to%20order%20Gulta%20White%20Cream%20(Rs.%201,500)" target="_blank" class="btn-card-quick">
+                <i class="fa-brands fa-whatsapp"></i> Order Now
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================================
+       4. WHIZ-LABORATORIES STYLE "SHOP BY SKIN CONCERN" BAR
+       ============================================================= -->
+  <section class="concerns-section" id="concerns">
+    <div class="container concerns-inner">
+      <div class="concern-lead">
+        <i class="fa-solid fa-sliders"></i> Shop By Skin Concern:
+      </div>
+      <div class="concern-pills-wrap">
+        <button class="concern-btn active" onclick="filterConcern('all', this)"><i class="fa-solid fa-check"></i> All Formulations</button>
+        <button class="concern-btn" onclick="filterConcern('pigment', this)"><i class="fa-solid fa-sun"></i> Pigmentation & Dark Spots</button>
+        <button class="concern-btn" onclick="filterConcern('acne', this)"><i class="fa-solid fa-shield-virus"></i> Acne & Blemishes</button>
+        <button class="concern-btn" onclick="filterConcern('glow', this)"><i class="fa-solid fa-sparkles"></i> Daily Radiance Glow</button>
+        <button class="concern-btn" onclick="filterConcern('hydration', this)"><i class="fa-solid fa-droplet"></i> Deep Moisture Barrier</button>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================================
+       5. PRODUCTS SECTION (CLIENT'S CORE PRODUCTS + LUXURY CARDS)
+       ============================================================= -->
+  <section class="products-sec" id="products">
+    <div class="container">
+      
+      <div class="section-title-wrap">
+        <div class="section-eyebrow">Our Exclusive Range</div>
+        <h2>Our Products</h2>
+        <p>Discover the Gulta Care skincare collection crafted for noticeable radiance, healthy elasticity, and daily skin perfection.</p>
+      </div>
+
+      <div class="products-grid-luxe">
+        
+        <!-- PRODUCT 1: Gulta White Cream -->
+        <div class="card-luxe" data-concern="pigment glow hydration">
+          <span class="card-badge-pill gold">Bestseller</span>
+          
+          <div class="card-img-box">
+            <div class="card-jar-box">
+              <div class="card-jar-lid-sm"></div>
+              <div class="card-jar-body-sm">
+                <span style="font-family:var(--font-serif); font-weight:800; color:var(--burgundy-800); font-size:1.05rem; line-height:1.1;">
+                  GULTA<br>WHITE<br><span style="color:var(--gold-600); font-size:0.62rem;">CREAM</span>
+                </span>
+                <span style="margin-top:6px; font-size:0.62rem; background:var(--burgundy-800); color:#fff; padding:2px 8px; border-radius:999px;">30g</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-content-luxe">
+            <div class="card-rating-row">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              <span>(4.9/5 • 420 reviews)</span>
+            </div>
+
+            <h3>Gulta White Cream</h3>
+            <p>Premium skincare cream for a smooth, fresh-looking complexion. Nourishes deeply and restores radiant glow.</p>
+
+            <div class="tags-cloud">
+              <span class="tag-bubble">Even Tone</span>
+              <span class="tag-bubble">Deep Hydration</span>
+              <span class="tag-bubble">Velvety Glow</span>
+            </div>
+
+            <div class="card-pricing-block">
+              <span class="price-old">Rs. 2,000</span>
+              <span class="price-main">Rs. 1,500</span>
+            </div>
+
+            <a href="https://wa.me/923001234567?text=I%20want%20to%20order%20Gulta%20White%20Cream%20(Rs.%201,500)" target="_blank" class="btn-card-order-luxe">
+              <i class="fa-brands fa-whatsapp"></i> Order on WhatsApp
+            </a>
+          </div>
+        </div>
+
+
+        <!-- PRODUCT 2: Gulta White Serum -->
+        <div class="card-luxe" data-concern="glow hydration">
+          <span class="card-badge-pill">Daily Glow</span>
+          
+          <div class="card-img-box">
+            <div class="serum-bottle-box">
+              <div class="pipette-cap"></div>
+              <div class="pipette-ring"></div>
+              <div class="pipette-bottle">
+                <div class="bottle-inner-label">
+                  <div class="lbl-title">GULTA WHITE</div>
+                  <div class="lbl-sub">SERUM</div>
+                  <span style="font-size:0.46rem; color:#777;">30 ml</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-content-luxe">
+            <div class="card-rating-row">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+              <span>(4.8/5 • 310 reviews)</span>
+            </div>
+
+            <h3>Gulta White Serum</h3>
+            <p>A premium facial serum designed for daily skincare routines. Lightweight, fast-absorbing brightening elixir.</p>
+
+            <div class="tags-cloud">
+              <span class="tag-bubble">Fast Absorbing</span>
+              <span class="tag-bubble">Vitamin C Glow</span>
+              <span class="tag-bubble">Anti-Dullness</span>
+            </div>
+
+            <div class="card-pricing-block">
+              <span class="price-old">Rs. 2,400</span>
+              <span class="price-main">Rs. 1,800</span>
+            </div>
+
+            <a href="https://wa.me/923001234567?text=I%20want%20to%20order%20Gulta%20White%20Serum%20(Rs.%201,800)" target="_blank" class="btn-card-order-luxe">
+              <i class="fa-brands fa-whatsapp"></i> Order on WhatsApp
+            </a>
+          </div>
+        </div>
+
+
+        <!-- PRODUCT 3: Gulta Acne Serum -->
+        <div class="card-luxe" data-concern="acne">
+          <span class="card-badge-pill">Targeted Care</span>
+          
+          <div class="card-img-box">
+            <div class="serum-bottle-box">
+              <div class="pipette-cap"></div>
+              <div class="pipette-ring"></div>
+              <div class="pipette-bottle acne-mode">
+                <div class="bottle-inner-label">
+                  <div class="lbl-title" style="color:#4a0d18;">GULTA</div>
+                  <div class="lbl-sub" style="color:#b38a3b;">ACNE SERUM</div>
+                  <span style="font-size:0.46rem; color:#777;">30 ml</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-content-luxe">
+            <div class="card-rating-row">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              <span>(4.9/5 • 285 reviews)</span>
+            </div>
+
+            <h3>Gulta Acne Serum</h3>
+            <p>Daily skincare serum for acne-prone skin. Calms breakouts, controls excess sebum and reduces redness gently.</p>
+
+            <div class="tags-cloud">
+              <span class="tag-bubble">Pore Refining</span>
+              <span class="tag-bubble">Oil Control</span>
+              <span class="tag-bubble">Soothes Redness</span>
+            </div>
+
+            <div class="card-pricing-block">
+              <span class="price-old">Rs. 2,400</span>
+              <span class="price-main">Rs. 1,800</span>
+            </div>
+
+            <a href="https://wa.me/923001234567?text=I%20want%20to%20order%20Gulta%20Acne%20Serum%20(Rs.%201,800)" target="_blank" class="btn-card-order-luxe">
+              <i class="fa-brands fa-whatsapp"></i> Order on WhatsApp
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =============================================================
+       6. FEATURES (WHY GULTA CARE?)
+       ============================================================= -->
+  <section class="features-sec" id="features">
+    <div class="container">
+      
+      <div class="section-title-wrap">
+        <div class="section-eyebrow">The Gulta Standard</div>
+        <h2>Why Gulta Care?</h2>
+        <p>We blend science-backed ingredients with luxury beauty formulation to give your skin pure nourishment without compromise.</p>
+      </div>
+
+      <div class="features-grid-luxe">
+        
+        <div class="feature-card-luxe">
+          <div class="feat-icon-emblem">
+            <i class="fa-solid fa-crown"></i>
+          </div>
+          <h3>Premium Quality</h3>
+          <p>Elegant skincare products with premium presentation and rigorously tested ingredients for visible rejuvenation.</p>
+        </div>
+
+        <div class="feature-card-luxe">
+          <div class="feat-icon-emblem">
+            <i class="fa-solid fa-flask-vial"></i>
+          </div>
+          <h3>Modern Science</h3>
+          <p>Contemporary botanical formulas designed for today's diverse skin types, tackling pollution and dullness.</p>
+        </div>
+
+        <div class="feature-card-luxe">
+          <div class="feat-icon-emblem">
+            <i class="fa-brands fa-whatsapp"></i>
+          </div>
+          <h3>Easy 1-Click Order</h3>
+          <p>Order directly through WhatsApp with instant confirmation and fast delivery right to your doorstep.</p>
+        </div>
+
+        <div class="feature-card-luxe">
+          <div class="feat-icon-emblem">
+            <i class="fa-solid fa-headset"></i>
+          </div>
+          <h3>Customer Care</h3>
+          <p>Dedicated skincare support and routine consultation to help you achieve your personal beauty goals.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =============================================================
+       7. ABOUT GULTA CARE (EDITORIAL LUXURY)
+       ============================================================= -->
+  <section class="about-sec" id="about">
+    <div class="container">
+      <div class="about-grid-luxe">
+        
+        <!-- Left Image Frame -->
+        <div>
+          <div class="about-photo-frame">
+            <img src="assets/images/model-portrait.jpg" alt="Gulta Care Model" onerror="this.src='assets/images/day_cream_product_1790882657971.jpg'">
+          </div>
+        </div>
+
+        <!-- Right Content -->
+        <div class="about-text-content">
+          <div class="section-eyebrow" style="color:var(--gold-300);">Our Philosophy</div>
+          <h2>About Gulta Care</h2>
+          <p class="about-lead">
+            Gulta Care is a skincare brand focused on bringing premium-looking, clinically balanced, and modern skincare products to customers.
+          </p>
+          <p>
+            Our core collection includes <strong>Gulta White Cream</strong>, <strong>Gulta White Serum</strong>, and <strong>Gulta Acne Serum</strong>. Every formula is carefully designed to enrich your natural skin barrier, brighten your complexion gently, and protect against environmental damage without harsh bleaching agents.
+          </p>
+
+          <div class="about-badges-grid">
+            <div class="about-badge-item">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>No Harsh Chemicals or Steroids</span>
+            </div>
+            <div class="about-badge-item">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>Dermatologically Safe & Tested</span>
+            </div>
+            <div class="about-badge-item">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>Suitable for All Skin Types</span>
+            </div>
+            <div class="about-badge-item">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>Fast Track Delivery in Pakistan</span>
+            </div>
+          </div>
+
+          <a href="#products" class="btn-primary-luxe" style="background: linear-gradient(135deg, var(--gold-400), var(--gold-600)); color:var(--burgundy-950);">
+            <i class="fa-solid fa-bag-shopping"></i> View Collection
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================================
+       8. CUSTOMER REVIEWS (SOCIAL PROOF)
+       ============================================================= -->
+  <section class="reviews-sec" id="reviews">
+    <div class="container">
+      
+      <div class="section-title-wrap">
+        <div class="section-eyebrow">Real Experiences</div>
+        <h2>What Our Customers Say</h2>
+        <p>Over 50,000 women and men across Pakistan trust Gulta White for their daily skincare routine.</p>
+      </div>
+
+      <div class="reviews-grid-luxe">
+        
+        <div class="review-box">
+          <div>
+            <div class="review-stars-wrap">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="review-body-text">
+              "Gulta White Cream is honestly the best purchase I made this year. My skin feels so soft, radiant, and the tone has balanced out completely within two weeks. Highly recommended!"
+            </p>
+          </div>
+          <div class="reviewer-meta-box">
+            <div class="reviewer-initial">A</div>
+            <div class="reviewer-details">
+              <h4>Ayesha Malik</h4>
+              <span>Lahore • Verified Buyer</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-box">
+          <div>
+            <div class="review-stars-wrap">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="review-body-text">
+              "I pair the Gulta White Serum with the cream every morning. It is completely non-sticky, absorbs instantly, and gives a natural glowing finish under makeup."
+            </p>
+          </div>
+          <div class="reviewer-meta-box">
+            <div class="reviewer-initial">S</div>
+            <div class="reviewer-details">
+              <h4>Sana Tariq</h4>
+              <span>Karachi • Verified Buyer</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-box">
+          <div>
+            <div class="review-stars-wrap">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="review-body-text">
+              "The Gulta Acne Serum stopped my recurring breakouts without drying out my sensitive skin. Ordering on WhatsApp was super smooth and received parcel in 2 days."
+            </p>
+          </div>
+          <div class="reviewer-meta-box">
+            <div class="reviewer-initial">M</div>
+            <div class="reviewer-details">
+              <h4>Maryam Khan</h4>
+              <span>Islamabad • Verified Buyer</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =============================================================
+       9. CONTACT & ORDER INQUIRY
+       ============================================================= -->
+  <section class="contact-sec" id="contact">
+    <div class="container">
+      
+      <div class="section-title-wrap">
+        <div class="section-eyebrow">Get In Touch</div>
+        <h2>Contact Us</h2>
+        <p>Send us your inquiry, feedback, or custom order request. Our beauty advisors respond promptly.</p>
+      </div>
+
+      <div class="contact-card-wrap">
+        <form class="contact-grid" onsubmit="handleContact(event)">
+          
+          <div class="form-group-luxe">
+            <label for="cName"><i class="fa-regular fa-user"></i> Full Name *</label>
+            <input type="text" id="cName" class="form-control-luxe" placeholder="e.g. Fatima Ali" required>
+          </div>
+
+          <div class="form-group-luxe">
+            <label for="cPhone"><i class="fa-brands fa-whatsapp"></i> WhatsApp / Mobile Number *</label>
+            <input type="tel" id="cPhone" class="form-control-luxe" placeholder="e.g. 0300 1234567" required>
+          </div>
+
+          <div class="form-group-luxe col-full">
+            <label for="cEmail"><i class="fa-regular fa-envelope"></i> Email Address</label>
+            <input type="email" id="cEmail" class="form-control-luxe" placeholder="e.g. yourname@gmail.com">
+          </div>
+
+          <div class="form-group-luxe col-full">
+            <label for="cProduct"><i class="fa-solid fa-spa"></i> Interested Formulation</label>
+            <select id="cProduct" class="form-control-luxe" style="cursor:pointer;">
+              <option value="General Inquiry">General Product Inquiry</option>
+              <option value="Gulta White Cream (Rs. 1,500)">Gulta White Cream (Rs. 1,500)</option>
+              <option value="Gulta White Serum (Rs. 1,800)">Gulta White Serum (Rs. 1,800)</option>
+              <option value="Gulta Acne Serum (Rs. 1,800)">Gulta Acne Serum (Rs. 1,800)</option>
+              <option value="Complete Routine Set (Special Bundle)">Complete Routine Set (Special Bundle)</option>
+            </select>
+          </div>
+
+          <div class="form-group-luxe col-full">
+            <label for="cMsg"><i class="fa-regular fa-message"></i> Message or Delivery Address *</label>
+            <textarea id="cMsg" class="form-control-luxe" placeholder="Write your questions, skin type, or delivery address..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit-luxe">
+            <i class="fa-solid fa-paper-plane"></i> Send Message Via WhatsApp
+          </button>
+
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =============================================================
+       10. FOOTER
+       ============================================================= -->
+  <footer>
+    <div class="container">
+      
+      <div class="footer-grid-luxe">
+        
+        <div class="footer-col">
+          <div class="brand-logo" style="margin-bottom: 12px;">
+            <div class="logo-crest" style="width:34px; height:34px; font-size:0.95rem;">
+              <i class="fa-solid fa-gem"></i>
+            </div>
+            <div class="logo-main" style="font-size:1.35rem;">Gulta <span>White</span></div>
+          </div>
+          <p>
+            Gulta Care provides luxury-grade, organic skin rejuvenation products crafted with passion for radiant, confident, everyday beauty.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#concerns">Skin Concerns</a></li>
+            <li><a href="#products">Our Products</a></li>
+            <li><a href="#about">About Brand</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Collection</h4>
+          <ul>
+            <li><a href="#products">Gulta White Cream (30g)</a></li>
+            <li><a href="#products">Gulta White Serum (30ml)</a></li>
+            <li><a href="#products">Gulta Acne Serum (30ml)</a></li>
+            <li><a href="#products">Complete Glow Trio</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Customer Care</h4>
+          <p><i class="fa-brands fa-whatsapp" style="color:var(--gold-400);"></i> WhatsApp: +92 300 1234567</p>
+          <p style="margin-top:6px;"><i class="fa-solid fa-truck" style="color:var(--gold-400);"></i> Free Delivery Across Pakistan (2-4 Days)</p>
+          <p style="margin-top:6px;"><i class="fa-solid fa-shield-heart" style="color:var(--gold-400);"></i> 100% Quality & Authenticity Guarantee</p>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom-luxe">
+        <p>© 2026 <span>Gulta Care</span>. All Rights Reserved. Premium Skincare Collection.</p>
+        <div>
+          <span>Cash on Delivery Available Nationwide</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- =============================================================
+       11. FLOATING WHATSAPP BUTTON (ALWAYS PRESENT)
+       ============================================================= -->
+  <a class="whatsapp-floater"
+     href="https://wa.me/923001234567?text=Hello%20Gulta%20Care,%20I%20want%20to%20place%20an%20order"
+     target="_blank"
+     aria-label="Order on WhatsApp">
+    <div class="wa-pulse"></div>
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+
+  <!-- =============================================================
+       12. INTERACTION JAVASCRIPT
+       ============================================================= -->
+  <script>
+    // Mobile Drawer Navigation
+    const openDrawerBtn = document.getElementById('openDrawerBtn');
+    const closeDrawerBtn = document.getElementById('closeDrawerBtn');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    const drawerOverlay = document.getElementById('drawerOverlay');
+
+    function toggleDrawer(open) {
+      if (open) {
+        mobileDrawer.classList.add('active');
+        drawerOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      } else {
+        mobileDrawer.classList.remove('active');
+        drawerOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    if (openDrawerBtn) openDrawerBtn.addEventListener('click', () => toggleDrawer(true));
+    if (closeDrawerBtn) closeDrawerBtn.addEventListener('click', () => toggleDrawer(false));
+    if (drawerOverlay) drawerOverlay.addEventListener('click', () => toggleDrawer(false));
+
+    document.querySelectorAll('.drawer-item').forEach(item => {
+      item.addEventListener('click', () => toggleDrawer(false));
+    });
+
+    // Whiz-style Skin Concern Filtering
+    function filterConcern(concern, btnElement) {
+      document.querySelectorAll('.concern-btn').forEach(b => b.classList.remove('active'));
+      btnElement.classList.add('active');
+
+      const cards = document.querySelectorAll('.card-luxe');
+      cards.forEach(card => {
+        if (concern === 'all') {
+          card.style.display = 'flex';
+        } else {
+          const cardConcerns = card.getAttribute('data-concern') || '';
+          if (cardConcerns.includes(concern)) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        }
+      });
+    }
+
+    // Contact Form to WhatsApp Formatter
+    function handleContact(e) {
+      e.preventDefault();
+      const name = document.getElementById('cName').value.trim();
+      const phone = document.getElementById('cPhone').value.trim();
+      const email = document.getElementById('cEmail').value.trim();
+      const product = document.getElementById('cProduct').value;
+      const message = document.getElementById('cMsg').value.trim();
+
+      const text = `*New Order / Inquiry via Gulta Care Website*%0A%0A` +
+                   `👤 *Name:* ${encodeURIComponent(name)}%0A` +
+                   `📱 *WhatsApp:* ${encodeURIComponent(phone)}%0A` +
+                   (email ? `✉️ *Email:* ${encodeURIComponent(email)}%0A` : '') +
+                   `🛍️ *Product:* ${encodeURIComponent(product)}%0A` +
+                   `💬 *Message / Address:* ${encodeURIComponent(message)}`;
+
+      window.open(`https://wa.me/923001234567?text=${text}`, '_blank');
+    }
+  </script>
+
+</body>
+</html>

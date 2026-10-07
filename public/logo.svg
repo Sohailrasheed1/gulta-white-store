@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <!-- Gold Gradient -->
+    <linearGradient id="goldGradL" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#bf953f" />
+      <stop offset="25%" stop-color="#fcf6ba" />
+      <stop offset="50%" stop-color="#d4af37" />
+      <stop offset="75%" stop-color="#fbf5b7" />
+      <stop offset="100%" stop-color="#aa771c" />
+    </linearGradient>
+
+    <!-- Deep Royal Velvet Gradient -->
+    <radialGradient id="velvetBgL" cx="40%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#3b0014" />
+      <stop offset="55%" stop-color="#26000c" />
+      <stop offset="100%" stop-color="#140006" />
+    </radialGradient>
+
+    <filter id="goldGlowL" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#d4af37" flood-opacity="0.45" />
+    </filter>
+  </defs>
+
+  <!-- Outer Glow / Background Circle -->
+  <circle cx="60" cy="60" r="57" fill="url(#velvetBgL)" stroke="url(#goldGradL)" stroke-width="3" />
+
+  <!-- Inner Concentric Ring -->
+  <circle cx="60" cy="60" r="51.5" fill="none" stroke="url(#goldGradL)" stroke-width="1" stroke-dasharray="3 2" opacity="0.85" />
+  <circle cx="60" cy="60" r="48" fill="none" stroke="url(#goldGradL)" stroke-width="0.75" opacity="0.6" />
+
+  <!-- Royal Crown Crest -->
+  <g transform="translate(60, 28) scale(0.85)" filter="url(#goldGlowL)">
+    <path d="M-16,8 L-14,0 L-6,5 L0,-8 L6,5 L14,0 L16,8 Z" fill="url(#goldGradL)" />
+    <circle cx="-14" cy="-1" r="1.5" fill="#ffffff" />
+    <circle cx="0" cy="-9" r="2.2" fill="#ffffff" />
+    <circle cx="14" cy="-1" r="1.5" fill="#ffffff" />
+    <path d="M0,-15 L1.5,-11 L6,-11 L2.5,-8 L4,-4 L0,-6 L-4,-4 L-2.5,-8 L-6,-11 L-1.5,-11 Z" fill="url(#goldGradL)" />
+  </g>
+
+  <!-- Monogram "GW" in High-Contrast Royal Serif Style -->
+  <g filter="url(#goldGlowL)">
+    <text x="47" y="66" 
+          font-family="'Playfair Display', 'Cormorant Garamond', Georgia, serif" 
+          font-size="28" 
+          font-weight="900" 
+          fill="url(#goldGradL)" 
+          text-anchor="middle"
+          letter-spacing="-1">G</text>
+
+    <text x="73" y="66" 
+          font-family="'Playfair Display', 'Cormorant Garamond', Georgia, serif" 
+          font-size="26" 
+          font-weight="900" 
+          fill="url(#goldGradL)" 
+          text-anchor="middle"
+          letter-spacing="-1">W</text>
+  </g>
+
+  <!-- Gold Divider Ribbon & Star -->
+  <line x1="28" y1="73" x2="44" y2="73" stroke="url(#goldGradL)" stroke-width="1" />
+  <polygon points="60,70 61.5,72.5 64.5,73 62,75 63,78 60,76.5 57,78 58,75 55.5,73 58.5,72.5" fill="url(#goldGradL)" />
+  <line x1="76" y1="73" x2="92" y2="73" stroke="url(#goldGradL)" stroke-width="1" />
+
+  <!-- Subtitle Text "GULTA WHITE" -->
+  <text x="60" y="86" 
+        font-family="'Plus Jakarta Sans', system-ui, sans-serif" 
+        font-size="8" 
+        font-weight="800" 
+        fill="#fef08a" 
+        text-anchor="middle" 
+        letter-spacing="2.6">GULTA WHITE</text>
+
+  <!-- Luxury Sub-caption -->
+  <text x="60" y="97" 
+        font-family="'Plus Jakarta Sans', system-ui, sans-serif" 
+        font-size="5.5" 
+        font-weight="700" 
+        fill="url(#goldGradL)" 
+        text-anchor="middle" 
+        letter-spacing="1.8">DERMA LUXURY</text>
+</svg>
